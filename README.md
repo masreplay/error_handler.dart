@@ -5,9 +5,9 @@ Welcome to [Perfrect Error Handler](https://pub.dev/packages/perfect_error_handl
 
 
 
-- define a constructor + the properties
-- override `toString`, `operator ==`, `hashCode`
-- implement a `copyWith` method to clone the object
+- handle all state init/loading/data/error easily
+- stream state changes 
+- logger for states
 - handling de/serialization
 
 Implementing all of this can take hundreds of lines, which are error-prone
