@@ -1,21 +1,41 @@
-Welcome to [Perfrect Error Handler](https://pub.dev/packages/perfect_error_handler), error handler with type-safety//streaming/freeze-functionality/
+Welcome to [Perfect Error Handler](https://pub.dev/packages/error_handler), error handler with type-safety/streaming/freezed-functionality/cover-all-dio-exceptions
 
 # Motivation
-"try and catch" are hard to use also then((){}).catch((){}) make code hard to read and modify
+`try{}catch(e){}` are hard to use also `then((){}).catch((){})` make code hard to read and modify
 
 
 
 - handle all state init/loading/data/error easily
 - stream state changes 
 - logger for states
-- handling de/serialization
+- built above freezed
+- function tear-off if possible
+- built on Dio so it covers all types of exceptions also you can add your own!
 
-Implementing all of this can take hundreds of lines, which are error-prone
-and affect the readability of your model significantly.
+Same as mentioned in [Freezed](https://pub.dev/packages/freezed)
+Implementing all of this can take hundreds of lines
+and it's hard to make a specific error handler in each project
 
-Freezed tries to fix that by implementing most of this for you, allowing you
-to focus on the definition of your model.
+**Perfect Error Handler** is implemented so all you have to do is start sending requests!
 
 | Before                          | After                          |
 | ------------------------------- | ------------------------------ |
 | ![before](readme/before.png) | ![before](readme/after.png) |
+
+
+How to use
+Install
+
+For a Flutter project:
+```cmd
+flutter pub add error_handler
+flutter pub add dio
+```
+
+For a Dart project:
+```cmd
+flutter pub add error_handler
+flutter pub add dio
+```
+
+

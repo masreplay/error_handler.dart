@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:perfect_error_handler/src/network_exception.dart';
-import 'package:perfect_error_handler/src/network_exception_localizations.dart';
-import 'package:perfect_error_handler/src/network_exception_localizations_default.dart';
+import 'package:error_handler/src/network_exception.dart';
+import 'package:error_handler/src/network_exception_localizations.dart';
+import 'package:error_handler/src/network_exception_localizations_default.dart';
 
 typedef ResponseTranslateCallback = String Function(Response response)?;
 

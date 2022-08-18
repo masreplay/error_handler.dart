@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:perfect_error_handler/src/network_exception.dart';
+import 'package:error_handler/src/network_exception.dart';
 
 // enum DioErrorType {
 //   /// It occurs when url is opened timeout.
