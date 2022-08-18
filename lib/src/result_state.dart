@@ -3,6 +3,9 @@ import 'package:perfect_error_handler/src/network_exception.dart';
 
 part 'result_state.freezed.dart';
 
+/// proxy typedef 
+typedef UiState<T> = ResultState<T>;
+
 // Ui status
 @freezed
 class ResultState<T> with _$ResultState<T> {

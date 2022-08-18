@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:perfect_error_handler/src/https_response.dart';
 import 'package:perfect_error_handler/perfect_error_handler.dart';
 import 'package:test/test.dart';
 

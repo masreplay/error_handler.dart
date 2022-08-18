@@ -6,7 +6,7 @@ import 'package:perfect_error_handler/src/network_exception_localizations_defaul
 typedef ResponseTranslateCallback = String Function(Response response)?;
 
 extension NetworkErrorExtension on NetworkException {
-  String getErrorMessage(
+  String getLocalizedErrorMessage(
     NetworkErrorLocalizations translation, {
     ResponseTranslateCallback? httpErrorStringCallBack,
   }) =>
@@ -24,9 +24,9 @@ extension NetworkErrorExtension on NetworkException {
         receiveTimeout: () => translation.receiveTimeout,
       );
 
-  String defaultErrorMessage() => getDefaultErrorMessage(this);
+  String defaultErrorMessage() => getErrorMessage(this);
 }
 
-String getDefaultErrorMessage(NetworkException error) {
-  return error.getErrorMessage(NetworkErrorLocalizationsDefault());
+String getErrorMessage(NetworkException error) {
+  return error.getLocalizedErrorMessage(NetworkErrorLocalizationsDefault());
 }

@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:perfect_error_handler/perfect_error_handler.dart';
-import 'package:perfect_error_handler/src/network_exception_localizations_utils.dart';
 
 class Post {
   final int id;
@@ -25,11 +24,10 @@ class Post {
   }
 }
 
-Future<HttpResponse<Post>> getPost() async {
+FutureResponse<Post> getPost() async {
   final dio = Dio();
 
-  final response =
-      await dio.get("https://jsonplaceholder.typicode.com/posts/1");
+  final response = await dio.get("https://jsonplaceholder.typicode.com/posts/1");
 
   final post = Post.fromJson(response.data);
 
@@ -37,9 +35,7 @@ Future<HttpResponse<Post>> getPost() async {
 }
 
 void main() {
-  final result = safeApiCall(() => getPost());
-
-  result.listen((event) {
+  safeApiCall(getPost).listen((event) {
     event.when(
       idle: () {
         print("init");
@@ -47,14 +43,12 @@ void main() {
       loading: () {
         print("loading...");
       },
-      data: (Post post, statusCode) {
+      data: (post, statusCode) {
         print(post.title);
       },
       error: (error) {
-        // handle error
-        final errorMessage = getDefaultErrorMessage(error);
-        print(errorMessage);
+        print(getErrorMessage(error));
       },
     );
-  }).asFuture();
+  });
 }

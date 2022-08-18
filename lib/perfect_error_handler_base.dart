@@ -1,12 +1,6 @@
-import 'package:dio/dio.dart';
+import 'package:perfect_error_handler/src/https_response.dart';
 import 'package:perfect_error_handler/src/network_exception.dart';
 import 'package:perfect_error_handler/src/result_state.dart';
-
-class HttpResponse<T> {
-  final T data;
-  final Response<dynamic> response;
-  HttpResponse(this.data, this.response);
-}
 
 typedef LoggingCallback<T> = Function(
   ResultState<T> resultState, {
