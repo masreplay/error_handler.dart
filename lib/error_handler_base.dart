@@ -1,19 +1,20 @@
 import 'package:error_handler/src/https_response.dart';
 import 'package:error_handler/src/network_exception.dart';
 import 'package:error_handler/src/result_state.dart';
+import 'package:error_handler/src/result_state_extension.dart';
 
-typedef LoggingCallback<T> = Function(
-  ResultState<T> resultState, {
+typedef LoggingCallback<T> = void Function(
+  ResultState<T> resultState,
   Object? error,
   StackTrace? trace,
-});
+);
 
 Stream<ResultState<T>> safeApiCall<T>(
   Future<HttpResponse<T>> Function() apiCall, {
-  LoggingCallback? logger,
+  LoggingCallback<T>? logger,
 }) async* {
   final loadingResult = ResultState<T>.loading();
-  logger?.call(loadingResult);
+  logger?.call(loadingResult, null, null);
   yield loadingResult;
 
   try {
@@ -24,7 +25,7 @@ Stream<ResultState<T>> safeApiCall<T>(
       statusCode: value.response.statusCode,
     );
 
-    logger?.call(dataResult);
+    logger?.call(dataResult, null, null);
 
     yield dataResult;
   } catch (e, trace) {
@@ -32,10 +33,24 @@ Stream<ResultState<T>> safeApiCall<T>(
 
     final errorResult = ResultState<T>.error(networkException);
 
-    logger?.call(errorResult, error: e, trace: trace);
+    logger?.call(errorResult, e, trace);
 
     yield errorResult;
   }
+}
+
+Future<ResultState<T>> safeApiCallFuture<T>(
+  Future<HttpResponse<T>> Function() apiCall, {
+  LoggingCallback<T>? logger,
+}) async {
+  var state = ResultState<T>.idle();
+  await safeApiCall(apiCall).listen((event) {
+    if (event.isDataOrError) {
+      state = event;
+      return;
+    }
+  }).asFuture();
+  return state;
 }
 
 /// Checks if you are awesome. Spoiler: you are.

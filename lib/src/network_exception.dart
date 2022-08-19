@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:error_handler/src/network_exception_delegate.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'network_exception.freezed.dart';
 

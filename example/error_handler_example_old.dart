@@ -1,5 +1,7 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
+
 import 'post.dart';
 
 // or you can use [Either] for flutter only give you type safe
@@ -58,7 +60,7 @@ Future<void> main() async {
 
   await getPost().then((List<dynamic>? value) {
     // can't access status code only data
-
+    
     statusCode = value?[1];
     response = value?[0];
     print(response?.title);
