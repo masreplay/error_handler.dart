@@ -1,11 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:test/test.dart';
 
-import 'unable_to_process_data_exception_test.dart';
-
-
+import 'api_call.dart';
 
 void main() {
   setUp(() {
@@ -13,7 +9,7 @@ void main() {
   });
   group('Errors', () {
     test('First Test', () async {
-      await safeApiCall(() => getUser())
+      await safeApiCall(() => getUser({"name": "Alex"}))
           .listen((event) => print(event))
           .asFuture();
     });

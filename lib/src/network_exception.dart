@@ -28,12 +28,11 @@ class NetworkException with _$NetworkException {
 
   const factory NetworkException.unexpectedError() = UnexpectedError;
 
+  /// Provide [Freezed.when] exception (connect [Freezed] with errors)
   static NetworkException getDioException(
-    error, {
-    NetworkExceptionDelegate? delegate,
+    Object error, {
+    NetworkExceptionDelegate delegate = const NetworkExceptionDelegateDefault(),
   }) {
-    delegate = NetworkExceptionDelegateDefault();
-
     if (error is Exception) {
       try {
         if (error is DioError) {
@@ -67,3 +66,11 @@ class NetworkException with _$NetworkException {
     }
   }
 }
+
+
+
+// Typed error with type
+
+// .typedError<User>(Object? value);
+
+// const unverifiedUser = typedError<User>;

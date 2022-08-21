@@ -1,5 +1,7 @@
+import 'package:error_handler/error_handler.dart';
 import 'package:error_handler/src/https_response.dart';
 import 'package:error_handler/src/network_exception.dart';
+import 'package:error_handler/src/network_exception_delegate.dart';
 import 'package:error_handler/src/result_state.dart';
 import 'package:error_handler/src/result_state_extension.dart';
 
@@ -12,6 +14,7 @@ typedef LoggingCallback<T> = void Function(
 Stream<ResultState<T>> safeApiCall<T>(
   Future<HttpResponse<T>> Function() apiCall, {
   LoggingCallback<T>? logger,
+  NetworkExceptionDelegate delegate = const NetworkExceptionDelegateDefault(),
 }) async* {
   final loadingResult = ResultState<T>.loading();
   logger?.call(loadingResult, null, null);
@@ -29,7 +32,10 @@ Stream<ResultState<T>> safeApiCall<T>(
 
     yield dataResult;
   } catch (e, trace) {
-    final networkException = NetworkException.getDioException(e);
+    final networkException = NetworkException.getDioException(
+      e,
+      delegate: delegate,
+    );
 
     final errorResult = ResultState<T>.error(networkException);
 

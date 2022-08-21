@@ -25,6 +25,8 @@ import 'package:error_handler/src/network_exception.dart';
 
 /// Replace [NetworkException] Default error type
 abstract class NetworkExceptionDelegate {
+  const NetworkExceptionDelegate();
+
   NetworkException whenConnectTimeout() {
     return const NetworkException.connectTimeout();
   }
@@ -64,4 +66,6 @@ abstract class NetworkExceptionDelegate {
 
 /// Default implementations of [NetworkExceptionDelegate]
 @internal
-class NetworkExceptionDelegateDefault extends NetworkExceptionDelegate {}
+class NetworkExceptionDelegateDefault extends NetworkExceptionDelegate {
+  const NetworkExceptionDelegateDefault();
+}
