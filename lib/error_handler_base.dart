@@ -2,6 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
 import 'package:error_handler/src/network_exception_delegate.dart';
 
+/// Stream the [ResultState] class
+typedef StreamState<T> = Stream<ResultState<T>>;
+
 /// safe wrap to [Dio] api call return stream of
 ///
 /// [apiCall] dio api call

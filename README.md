@@ -23,7 +23,7 @@ and it's hard to make a specific error handler in each project
 | ![before](readme/before.png) | ![before](readme/after.png) |
 
 
-How to use
+## How to use
 Install
 
 For a Flutter project:
@@ -39,3 +39,69 @@ flutter pub add dio
 ```
 
 
+## Example
+**[read fill example here](example/error_handler_example.dart)**
+
+```dart
+import 'package:dio/dio.dart';
+import 'package:error_handler/error_handler.dart';
+import 'post.dart';
+
+
+/// first create [Dio] api call
+FutureResponse<Post> getPost() async {
+  final dio = Dio();
+
+  final response = await dio.get("https://jsonplaceholder.typicode.com/posts/1");
+
+  return HttpResponse(Post.fromJson(response.data), response);
+}
+
+/// wrap the api call with [safeApiCall]
+void main() {
+  safeApiCall(getPost).listen((event) {
+    event.when(
+      idle: () {
+        print("init");
+      },
+      loading: () {
+        print("loading...");
+      },
+      data: (post, statusCode) {
+        print("title: ${post.title}");
+      },
+      error: (error) {
+        print(getErrorMessage(error));
+      },
+    );
+  });
+}
+```
+
+**how to use safeApiCall**
+```dart
+
+safeApiCall(() {
+  return getPost();
+}).listen((event) {
+    event.whenOrNull(
+      data: (post, statusCode) {
+        print(post.title);
+      },
+    );
+  });
+```
+
+other example
+```dart
+StreamState<Post> getPostRepository(String id) =>
+    safeApiCall(() => getPost(id));
+```
+
+## ResultState can use other typedef like
+```
+ApiResponse, UiState
+```
+
+## Credits 🙏
+[Freezed](https://github.com/rrousselGit/freezed)
