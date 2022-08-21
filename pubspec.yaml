@@ -1,6 +1,6 @@
 name: error_handler
 description: Advance error handler for Dio http request.
-version: 0.1.0-dev.3
+version: 1.0.2-dev
 repository: https://github.com/masreplay/perfect_error_handler
 homepage: https://github.com/masreplay/perfect_error_handler
 
