@@ -51,16 +51,17 @@ Future<List<dynamic>?> getPost() async {
 Future<void> main() async {
   var isLoading = false;
 
-  print("init");
+  print("init $isLoading");
   Post? response;
   int? statusCode;
-
+  print("$statusCode");
+  
   isLoading = true;
   print("loading... ");
 
   await getPost().then((List<dynamic>? value) {
     // can't access status code only data
-    
+
     statusCode = value?[1];
     response = value?[0];
     print(response?.title);

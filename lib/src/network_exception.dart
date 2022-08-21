@@ -8,7 +8,7 @@ part 'network_exception.freezed.dart';
 
 /// Unify all possible [Exception] came from [Dio] request
 @Freezed(unionKey: "dioException", map: null, copyWith: true)
-class NetworkException with _$NetworkException {
+class NetworkException<T extends Exception> with _$NetworkException {
   const factory NetworkException.connectTimeout() = ConnectTimeout;
 
   const factory NetworkException.sendTimeout() = SendTimeout;
@@ -27,6 +27,8 @@ class NetworkException with _$NetworkException {
   const factory NetworkException.unableToProcessData() = UnableToProcessData;
 
   const factory NetworkException.unexpectedError() = UnexpectedError;
+
+  factory NetworkException.userDefinedException(T error) = UserDefinedException;
 
   /// Provide [Freezed.when] exception (connect [Freezed] with errors)
   static NetworkException getDioException(

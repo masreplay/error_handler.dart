@@ -22,6 +22,7 @@ extension NetworkErrorExtension on NetworkException {
         unableToProcessData: () => translation.unableToProcessData,
         otherException: () => translation.otherException,
         receiveTimeout: () => translation.receiveTimeout,
+        userDefinedException: (error) => translation.unexpectedError,
       );
 
   String defaultErrorMessage() => getErrorMessage(this);

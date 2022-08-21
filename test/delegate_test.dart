@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/error_handler_base.dart';
-import 'package:error_handler/src/network_exception.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:test/test.dart';
 

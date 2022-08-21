@@ -1,24 +1,20 @@
+import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/src/https_response.dart';
-import 'package:error_handler/src/network_exception.dart';
 import 'package:error_handler/src/network_exception_delegate.dart';
-import 'package:error_handler/src/result_state.dart';
-import 'package:error_handler/src/result_state_extension.dart';
 
-typedef LoggingCallback<T> = void Function(
-  ResultState<T> resultState,
-  Object? error,
-  StackTrace? trace,
-);
-
+/// safe wrap to [Dio] api call return stream of
+///
+/// [apiCall] dio api call
+/// [logger] print current state of [apiCall]
+/// []
 Stream<ResultState<T>> safeApiCall<T>(
-  Future<HttpResponse<T>> Function() apiCall, {
+  FutureResponse<T> Function() apiCall, {
   LoggingCallback<T>? logger,
   NetworkExceptionDelegate delegate = const NetworkExceptionDelegateDefault(),
+  ResultState<T> firstState = const ResultState.loading(),
 }) async* {
-  final loadingResult = ResultState<T>.loading();
-  logger?.call(loadingResult, null, null);
-  yield loadingResult;
+  logger?.call(firstState, null, null);
+  yield firstState;
 
   try {
     final value = await apiCall();
@@ -48,16 +44,27 @@ Stream<ResultState<T>> safeApiCall<T>(
 Future<ResultState<T>> safeApiCallFuture<T>(
   Future<HttpResponse<T>> Function() apiCall, {
   LoggingCallback<T>? logger,
+  NetworkExceptionDelegate delegate = const NetworkExceptionDelegateDefault(),
 }) async {
-  var state = ResultState<T>.idle();
-  await safeApiCall(apiCall).listen((event) {
-    if (event.isDataOrError) {
-      state = event;
-      return;
-    }
-  }).asFuture();
-  return state;
-}
+  try {
+    final value = await apiCall();
 
-/// Checks if you are awesome. Spoiler: you are.
-class SafeService {}
+    final dataResult = ResultState<T>.data(
+      data: value.data,
+      statusCode: value.response.statusCode,
+    );
+
+    logger?.call(dataResult, null, null);
+
+    return dataResult;
+  } catch (e, trace) {
+    final networkException =
+        NetworkException.getDioException(e, delegate: delegate);
+
+    final errorResult = ResultState<T>.error(networkException);
+
+    logger?.call(errorResult, e, trace);
+
+    return errorResult;
+  }
+}

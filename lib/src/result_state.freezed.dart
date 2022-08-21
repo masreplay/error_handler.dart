@@ -21,7 +21,7 @@ mixin _$ResultState<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data, int? statusCode) data,
-    required TResult Function(NetworkException error) error,
+    required TResult Function(NetworkException<Exception> error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$ResultState<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data, int? statusCode)? data,
-    TResult Function(NetworkException error)? error,
+    TResult Function(NetworkException<Exception> error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$ResultState<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data, int? statusCode)? data,
-    TResult Function(NetworkException error)? error,
+    TResult Function(NetworkException<Exception> error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,7 +126,7 @@ class _$Idle<T> implements Idle<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data, int? statusCode) data,
-    required TResult Function(NetworkException error) error,
+    required TResult Function(NetworkException<Exception> error) error,
   }) {
     return idle();
   }
@@ -137,7 +137,7 @@ class _$Idle<T> implements Idle<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data, int? statusCode)? data,
-    TResult Function(NetworkException error)? error,
+    TResult Function(NetworkException<Exception> error)? error,
   }) {
     return idle?.call();
   }
@@ -148,7 +148,7 @@ class _$Idle<T> implements Idle<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data, int? statusCode)? data,
-    TResult Function(NetworkException error)? error,
+    TResult Function(NetworkException<Exception> error)? error,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -243,7 +243,7 @@ class _$Loading<T> implements Loading<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data, int? statusCode) data,
-    required TResult Function(NetworkException error) error,
+    required TResult Function(NetworkException<Exception> error) error,
   }) {
     return loading();
   }
@@ -254,7 +254,7 @@ class _$Loading<T> implements Loading<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data, int? statusCode)? data,
-    TResult Function(NetworkException error)? error,
+    TResult Function(NetworkException<Exception> error)? error,
   }) {
     return loading?.call();
   }
@@ -265,7 +265,7 @@ class _$Loading<T> implements Loading<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data, int? statusCode)? data,
-    TResult Function(NetworkException error)? error,
+    TResult Function(NetworkException<Exception> error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -392,7 +392,7 @@ class _$Data<T> implements Data<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data, int? statusCode) data,
-    required TResult Function(NetworkException error) error,
+    required TResult Function(NetworkException<Exception> error) error,
   }) {
     return data(this.data, statusCode);
   }
@@ -403,7 +403,7 @@ class _$Data<T> implements Data<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data, int? statusCode)? data,
-    TResult Function(NetworkException error)? error,
+    TResult Function(NetworkException<Exception> error)? error,
   }) {
     return data?.call(this.data, statusCode);
   }
@@ -414,7 +414,7 @@ class _$Data<T> implements Data<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data, int? statusCode)? data,
-    TResult Function(NetworkException error)? error,
+    TResult Function(NetworkException<Exception> error)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -476,9 +476,9 @@ abstract class Data<T> implements ResultState<T> {
 abstract class _$$ErrorCopyWith<T, $Res> {
   factory _$$ErrorCopyWith(_$Error<T> value, $Res Function(_$Error<T>) then) =
       __$$ErrorCopyWithImpl<T, $Res>;
-  $Res call({NetworkException error});
+  $Res call({NetworkException<Exception> error});
 
-  $NetworkExceptionCopyWith<$Res> get error;
+  $NetworkExceptionCopyWith<Exception, $Res> get error;
 }
 
 /// @nodoc
@@ -498,13 +498,13 @@ class __$$ErrorCopyWithImpl<T, $Res> extends _$ResultStateCopyWithImpl<T, $Res>
       error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as NetworkException,
+              as NetworkException<Exception>,
     ));
   }
 
   @override
-  $NetworkExceptionCopyWith<$Res> get error {
-    return $NetworkExceptionCopyWith<$Res>(_value.error, (value) {
+  $NetworkExceptionCopyWith<Exception, $Res> get error {
+    return $NetworkExceptionCopyWith<Exception, $Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
     });
   }
@@ -516,7 +516,7 @@ class _$Error<T> implements Error<T> {
   const _$Error(this.error);
 
   @override
-  final NetworkException error;
+  final NetworkException<Exception> error;
 
   @override
   String toString() {
@@ -546,7 +546,7 @@ class _$Error<T> implements Error<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data, int? statusCode) data,
-    required TResult Function(NetworkException error) error,
+    required TResult Function(NetworkException<Exception> error) error,
   }) {
     return error(this.error);
   }
@@ -557,7 +557,7 @@ class _$Error<T> implements Error<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data, int? statusCode)? data,
-    TResult Function(NetworkException error)? error,
+    TResult Function(NetworkException<Exception> error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -568,7 +568,7 @@ class _$Error<T> implements Error<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data, int? statusCode)? data,
-    TResult Function(NetworkException error)? error,
+    TResult Function(NetworkException<Exception> error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -616,9 +616,9 @@ class _$Error<T> implements Error<T> {
 }
 
 abstract class Error<T> implements ResultState<T> {
-  const factory Error(final NetworkException error) = _$Error<T>;
+  const factory Error(final NetworkException<Exception> error) = _$Error<T>;
 
-  NetworkException get error;
+  NetworkException<Exception> get error;
   @JsonKey(ignore: true)
   _$$ErrorCopyWith<T, _$Error<T>> get copyWith =>
       throw _privateConstructorUsedError;

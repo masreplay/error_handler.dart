@@ -7,7 +7,7 @@ part 'result_state.freezed.dart';
 typedef UiState<T> = ResultState<T>;
 
 // Ui status
-@freezed
+@Freezed()
 class ResultState<T> with _$ResultState<T> {
   const factory ResultState.idle() = Idle<T>;
 
