@@ -28,7 +28,8 @@ class NetworkException<T extends Exception> with _$NetworkException {
 
   const factory NetworkException.unexpectedError() = UnexpectedError;
 
-  factory NetworkException.userDefinedException(T error) = UserDefinedException;
+  factory NetworkException.userDefinedException(T error) =
+      UserDefinedException<T>;
 
   /// Provide [Freezed.when] exception (connect [Freezed] with errors)
   static NetworkException getDioException(
@@ -68,11 +69,3 @@ class NetworkException<T extends Exception> with _$NetworkException {
     }
   }
 }
-
-
-
-// Typed error with type
-
-// .typedError<User>(Object? value);
-
-// const unverifiedUser = typedError<User>;
