@@ -20,7 +20,7 @@ and it's hard to make a specific error handler in each project
 
 | Before                          | After                          |
 | ------------------------------- | ------------------------------ |
-| ![before](readme/before.png) | ![before](readme/after.png) |
+| ![before](readme/before.png) | ![after](readme/after.png) |
 
 
 ## How to use
