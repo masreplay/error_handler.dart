@@ -3,10 +3,15 @@ import 'package:error_handler/src/network_exception.dart';
 
 part 'result_state.freezed.dart';
 
-/// proxy typedef
+/// proxy typedef for [ResultState]
 typedef UiState<T> = ResultState<T>;
 
-// Ui status
+/// proxy typedef for [ResultState]
+typedef ApiResponse<T> = ResultState<T>;
+
+/// State of result it could [Data], [Error], [Idle], [Loading]
+///
+/// use other typedef like [UiState], [ApiResponse]
 @Freezed()
 class ResultState<T> with _$ResultState<T> {
   const factory ResultState.idle() = Idle<T>;
