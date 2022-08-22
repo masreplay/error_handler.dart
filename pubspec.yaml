@@ -1,5 +1,5 @@
 name: error_handler
-description: Advance error handler for Dio http request.
+description: Advance error handler for Dio, http request and retrofit handling state of response or ui for flutter
 version: 1.0.2-dev
 repository: https://github.com/masreplay/perfect_error_handler
 homepage: https://github.com/masreplay/perfect_error_handler
