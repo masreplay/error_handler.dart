@@ -11,6 +11,7 @@ Welcome to [Perfect Error Handler](https://pub.dev/packages/error_handler), erro
 - built above freezed
 - function tear-off if possible
 - built on Dio so it covers all types of exceptions also you can add your own!
+- [chopper](https://pub.dev/packages/chopper) support
 
 Same as mentioned in [Freezed](https://pub.dev/packages/freezed)
 Implementing all of this can take hundreds of lines
