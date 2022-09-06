@@ -28,7 +28,7 @@ extension HttpResponseChopperExtension on chopper.Response {
     );
   }
 
-  HttpResponse<T, chopper.Response> to<T>() {
+  HttpResponse<T, chopper.Response> transform<T>() {
     return HttpResponse(
       body,
       ResponseValue<chopper.Response>(this, statusCode),
