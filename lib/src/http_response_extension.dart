@@ -3,10 +3,10 @@ import 'package:dio/dio.dart' as dio;
 import 'package:error_handler/error_handler.dart';
 
 /// Covert response to dart class or something else
-typedef ResponseConverter<T, RT> = T Function(RT map);
+typedef ResponseConverter<R, RT> = R Function(RT map);
 
 /// [dio.Response] convertor
-typedef DioConverter<T> = ResponseConverter<T, Map<String, dynamic>>;
+typedef DioConverter<R> = ResponseConverter<R, Map<String, dynamic>>;
 
 extension HttpResponseDioExtension on dio.Response {
   HttpResponse<T, dynamic> convert<T>(DioConverter<T> convert) {
@@ -18,20 +18,28 @@ extension HttpResponseDioExtension on dio.Response {
 }
 
 /// [chopper.Response] convertor
-typedef ChopperResponse<T> = ResponseConverter<T, Map<String, dynamic>>;
+typedef ChopperResponse<R> = ResponseConverter<R, Map<String, dynamic>>;
 
-extension HttpResponseChopperExtension<T> on chopper.Response {
-  HttpResponse<T, chopper.Response> convert(ChopperResponse<T> convert) {
-    return HttpResponse<T, chopper.Response>(
-      convert(body),
-      ResponseValue(body, statusCode),
+typedef ChopperHttpResponse<RT> = HttpResponse<RT, chopper.Response<RT>>;
+
+typedef FutureChopperResponse<RT> = Future<chopper.Response<RT>>;
+
+extension HttpResponseChopperExtension<RT> on chopper.Response<RT> {
+  ChopperHttpResponse convert<T>(ChopperResponse<T> convert) {
+    return ChopperHttpResponse(
+      convert(body as dynamic),
+      ResponseValue(body as dynamic, statusCode),
     );
   }
 
-  HttpResponse<T, chopper.Response> transform() {
-    return HttpResponse<T, chopper.Response>(
-      body,
-      ResponseValue<chopper.Response>(this, statusCode),
+  ChopperHttpResponse<RT> transform() {
+    return ChopperHttpResponse<RT>(
+      body as RT,
+      ResponseValue(this, statusCode),
     );
   }
+}
+
+extension HttpResponseChopperExtensionFuture<RT> on FutureChopperResponse<RT> {
+  Future<ChopperHttpResponse<RT>> transform() async => (await this).transform();
 }
