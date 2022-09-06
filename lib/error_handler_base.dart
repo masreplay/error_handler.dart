@@ -24,7 +24,7 @@ Stream<ResultState<T>> safeApiCall<T>(
 
     final dataResult = ResultState<T>.data(
       data: value.data,
-      statusCode: value.response.statusCode,
+      response: value.response,
     );
 
     logger?.call(dataResult, null, null);
@@ -54,7 +54,7 @@ Future<ResultState<T>> safeApiCallFuture<T>(
 
     final dataResult = ResultState<T>.data(
       data: value.data,
-      statusCode: value.response.statusCode,
+      response: value.response,
     );
 
     logger?.call(dataResult, null, null);

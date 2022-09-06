@@ -1,5 +1,5 @@
+import 'package:error_handler/error_handler.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:error_handler/src/network_exception.dart';
 
 part 'result_state.freezed.dart';
 
@@ -18,7 +18,11 @@ class ResultState<T> with _$ResultState<T> {
 
   const factory ResultState.loading() = Loading<T>;
 
-  const factory ResultState.data({required T data, int? statusCode}) = Data<T>;
+  /// same as [HttpResponse] params
+  const factory ResultState.data({
+    required T data,
+    required ResponseValue<dynamic> response,
+  }) = Data<T>;
 
   const factory ResultState.error(NetworkException error) = Error<T>;
 }

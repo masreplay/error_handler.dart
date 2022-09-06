@@ -20,7 +20,7 @@ mixin _$ResultState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
-    required TResult Function(T data, int? statusCode) data,
+    required TResult Function(T data, ResponseValue<dynamic> response) data,
     required TResult Function(NetworkException<Exception> error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$ResultState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data, int? statusCode)? data,
+    TResult Function(T data, ResponseValue<dynamic> response)? data,
     TResult Function(NetworkException<Exception> error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$ResultState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data, int? statusCode)? data,
+    TResult Function(T data, ResponseValue<dynamic> response)? data,
     TResult Function(NetworkException<Exception> error)? error,
     required TResult orElse(),
   }) =>
@@ -125,7 +125,7 @@ class _$Idle<T> implements Idle<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
-    required TResult Function(T data, int? statusCode) data,
+    required TResult Function(T data, ResponseValue<dynamic> response) data,
     required TResult Function(NetworkException<Exception> error) error,
   }) {
     return idle();
@@ -136,7 +136,7 @@ class _$Idle<T> implements Idle<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data, int? statusCode)? data,
+    TResult Function(T data, ResponseValue<dynamic> response)? data,
     TResult Function(NetworkException<Exception> error)? error,
   }) {
     return idle?.call();
@@ -147,7 +147,7 @@ class _$Idle<T> implements Idle<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data, int? statusCode)? data,
+    TResult Function(T data, ResponseValue<dynamic> response)? data,
     TResult Function(NetworkException<Exception> error)? error,
     required TResult orElse(),
   }) {
@@ -242,7 +242,7 @@ class _$Loading<T> implements Loading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
-    required TResult Function(T data, int? statusCode) data,
+    required TResult Function(T data, ResponseValue<dynamic> response) data,
     required TResult Function(NetworkException<Exception> error) error,
   }) {
     return loading();
@@ -253,7 +253,7 @@ class _$Loading<T> implements Loading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data, int? statusCode)? data,
+    TResult Function(T data, ResponseValue<dynamic> response)? data,
     TResult Function(NetworkException<Exception> error)? error,
   }) {
     return loading?.call();
@@ -264,7 +264,7 @@ class _$Loading<T> implements Loading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data, int? statusCode)? data,
+    TResult Function(T data, ResponseValue<dynamic> response)? data,
     TResult Function(NetworkException<Exception> error)? error,
     required TResult orElse(),
   }) {
@@ -320,7 +320,7 @@ abstract class Loading<T> implements ResultState<T> {
 abstract class _$$DataCopyWith<T, $Res> {
   factory _$$DataCopyWith(_$Data<T> value, $Res Function(_$Data<T>) then) =
       __$$DataCopyWithImpl<T, $Res>;
-  $Res call({T data, int? statusCode});
+  $Res call({T data, ResponseValue<dynamic> response});
 }
 
 /// @nodoc
@@ -335,17 +335,17 @@ class __$$DataCopyWithImpl<T, $Res> extends _$ResultStateCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? data = freezed,
-    Object? statusCode = freezed,
+    Object? response = freezed,
   }) {
     return _then(_$Data<T>(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as T,
-      statusCode: statusCode == freezed
-          ? _value.statusCode
-          : statusCode // ignore: cast_nullable_to_non_nullable
-              as int?,
+      response: response == freezed
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as ResponseValue<dynamic>,
     ));
   }
 }
@@ -353,16 +353,16 @@ class __$$DataCopyWithImpl<T, $Res> extends _$ResultStateCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$Data<T> implements Data<T> {
-  const _$Data({required this.data, this.statusCode});
+  const _$Data({required this.data, required this.response});
 
   @override
   final T data;
   @override
-  final int? statusCode;
+  final ResponseValue<dynamic> response;
 
   @override
   String toString() {
-    return 'ResultState<$T>.data(data: $data, statusCode: $statusCode)';
+    return 'ResultState<$T>.data(data: $data, response: $response)';
   }
 
   @override
@@ -371,15 +371,14 @@ class _$Data<T> implements Data<T> {
         (other.runtimeType == runtimeType &&
             other is _$Data<T> &&
             const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality()
-                .equals(other.statusCode, statusCode));
+            const DeepCollectionEquality().equals(other.response, response));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(statusCode));
+      const DeepCollectionEquality().hash(response));
 
   @JsonKey(ignore: true)
   @override
@@ -391,10 +390,10 @@ class _$Data<T> implements Data<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
-    required TResult Function(T data, int? statusCode) data,
+    required TResult Function(T data, ResponseValue<dynamic> response) data,
     required TResult Function(NetworkException<Exception> error) error,
   }) {
-    return data(this.data, statusCode);
+    return data(this.data, response);
   }
 
   @override
@@ -402,10 +401,10 @@ class _$Data<T> implements Data<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data, int? statusCode)? data,
+    TResult Function(T data, ResponseValue<dynamic> response)? data,
     TResult Function(NetworkException<Exception> error)? error,
   }) {
-    return data?.call(this.data, statusCode);
+    return data?.call(this.data, response);
   }
 
   @override
@@ -413,12 +412,12 @@ class _$Data<T> implements Data<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data, int? statusCode)? data,
+    TResult Function(T data, ResponseValue<dynamic> response)? data,
     TResult Function(NetworkException<Exception> error)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(this.data, statusCode);
+      return data(this.data, response);
     }
     return orElse();
   }
@@ -462,11 +461,12 @@ class _$Data<T> implements Data<T> {
 }
 
 abstract class Data<T> implements ResultState<T> {
-  const factory Data({required final T data, final int? statusCode}) =
-      _$Data<T>;
+  const factory Data(
+      {required final T data,
+      required final ResponseValue<dynamic> response}) = _$Data<T>;
 
   T get data;
-  int? get statusCode;
+  ResponseValue<dynamic> get response;
   @JsonKey(ignore: true)
   _$$DataCopyWith<T, _$Data<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -545,7 +545,7 @@ class _$Error<T> implements Error<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
-    required TResult Function(T data, int? statusCode) data,
+    required TResult Function(T data, ResponseValue<dynamic> response) data,
     required TResult Function(NetworkException<Exception> error) error,
   }) {
     return error(this.error);
@@ -556,7 +556,7 @@ class _$Error<T> implements Error<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data, int? statusCode)? data,
+    TResult Function(T data, ResponseValue<dynamic> response)? data,
     TResult Function(NetworkException<Exception> error)? error,
   }) {
     return error?.call(this.error);
@@ -567,7 +567,7 @@ class _$Error<T> implements Error<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data, int? statusCode)? data,
+    TResult Function(T data, ResponseValue<dynamic> response)? data,
     TResult Function(NetworkException<Exception> error)? error,
     required TResult orElse(),
   }) {

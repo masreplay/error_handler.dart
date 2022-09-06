@@ -7,8 +7,9 @@ import 'post.dart';
 FutureResponse<Post> getPost() async {
   final dio = Dio();
 
-  final response =
-      await dio.get<String>("https://jsonplaceholder.typicode.com/posts/1");
+  const path = "https://jsonplaceholder.typicode.com/posts/1";
+
+  final response = await dio.get(path);
 
   return response.to(Post.fromJson);
 }
