@@ -9,10 +9,10 @@ typedef ResponseConverter<T, RT> = T Function(RT map);
 typedef DioConverter<T> = ResponseConverter<T, Map<String, dynamic>>;
 
 extension HttpResponseDioExtension on dio.Response {
-  HttpResponse<T, dynamic> to<T>(DioConverter<T> convert) {
+  HttpResponse<T, dynamic> convert<T>(DioConverter<T> convert) {
     return HttpResponse<T, dynamic>(
       convert(data),
-      ResponseValue(data, statusCode),
+      ResponseValue<dio.Response>(this, statusCode),
     );
   }
 }
@@ -21,10 +21,17 @@ extension HttpResponseDioExtension on dio.Response {
 typedef ChopperResponse<T> = ResponseConverter<T, Map<String, dynamic>>;
 
 extension HttpResponseChopperExtension on chopper.Response {
-  HttpResponse<T, dynamic> to<T>(ChopperResponse<T> convert) {
-    return HttpResponse<T, dynamic>(
+  HttpResponse<T, chopper.Response> convert<T>(ChopperResponse<T> convert) {
+    return HttpResponse<T, chopper.Response>(
       convert(body),
       ResponseValue(body, statusCode),
+    );
+  }
+
+  HttpResponse<T, chopper.Response> to<T>() {
+    return HttpResponse(
+      body,
+      ResponseValue<chopper.Response>(this, statusCode),
     );
   }
 }

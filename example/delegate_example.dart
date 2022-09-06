@@ -18,7 +18,7 @@ FutureResponse<Post> getPost() async {
   final response =
       await Dio().get("https://jsonplaceholder.typicode.com/posts/1");
 
-  return response.to(Post.fromJson);
+  return response.convert(Post.fromJson);
 }
 
 void main() {

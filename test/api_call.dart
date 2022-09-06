@@ -21,5 +21,5 @@ FutureResponse<User> getUser(Map<String, dynamic> data) async {
 
   final response = await dio.get(path);
 
-  return response.to(User.fromJson);
+  return response.convert(User.fromJson);
 }

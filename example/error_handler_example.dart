@@ -11,7 +11,7 @@ FutureResponse<Post> getPost() async {
 
   final response = await dio.get(path);
 
-  return response.to(Post.fromJson);
+  return response.convert(Post.fromJson);
 }
 
 /// wrap the api call with [safeApiCall]
