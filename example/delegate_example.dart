@@ -1,10 +1,11 @@
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' show Dio;
 import 'package:error_handler/error_handler.dart';
+
 import 'post.dart';
 
 class UserTypeNetworkExceptionDelegate extends NetworkExceptionDelegate {
   @override
-  NetworkException whenResponseException(Response response) {
+  NetworkException whenResponseException(ResponseValue response) {
     if (response.data["userType"] == "Agent") {
       return NetworkException.unexpectedError();
     }
@@ -14,12 +15,10 @@ class UserTypeNetworkExceptionDelegate extends NetworkExceptionDelegate {
 }
 
 FutureResponse<Post> getPost() async {
-  final dio = Dio();
-
   final response =
-      await dio.get("https://jsonplaceholder.typicode.com/posts/1");
+      await Dio().get("https://jsonplaceholder.typicode.com/posts/1");
 
-  return HttpResponse(Post.fromJson(response.data), response);
+  return response.to(Post.fromJson);
 }
 
 void main() {

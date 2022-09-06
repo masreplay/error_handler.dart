@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
+import 'package:error_handler/src/http_response_extension.dart';
+
 import 'post.dart';
 
 /// first create [Dio] api call
@@ -7,9 +9,9 @@ FutureResponse<Post> getPost() async {
   final dio = Dio();
 
   final response =
-      await dio.get("https://jsonplaceholder.typicode.com/posts/1");
+      await dio.get<String>("https://jsonplaceholder.typicode.com/posts/1");
 
-  return HttpResponse(Post.fromJson(response.data), response);
+  return response.to(Post.fromJson);
 }
 
 /// wrap the api call with [safeApiCall]

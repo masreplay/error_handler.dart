@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:error_handler/error_handler.dart';
 import 'package:error_handler/src/network_exception_delegate.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -15,7 +16,7 @@ class NetworkException<T extends Exception> with _$NetworkException {
 
   const factory NetworkException.receiveTimeout() = ReceiveTimeout;
 
-  const factory NetworkException.responseException(Response response) =
+  const factory NetworkException.responseException(ResponseValue response) =
       ResponseException;
 
   const factory NetworkException.requestCancelled() = RequestCancelled;
@@ -49,7 +50,10 @@ class NetworkException<T extends Exception> with _$NetworkException {
             case DioErrorType.receiveTimeout:
               return delegate.whenReceiveTimeout();
             case DioErrorType.response:
-              return delegate.whenResponseException(error.response!);
+              final response = error.response!;
+              return delegate.whenResponseException(
+                ResponseValue(response.data, response.statusCode),
+              );
             case DioErrorType.other:
               return delegate.whenOtherException();
           }

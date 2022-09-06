@@ -1,6 +1,6 @@
-import 'package:dio/dio.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:error_handler/error_handler.dart';
 import 'package:error_handler/src/network_exception.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 // enum DioErrorType {
 //   /// It occurs when url is opened timeout.
@@ -39,7 +39,7 @@ abstract class NetworkExceptionDelegate {
     return const NetworkException.receiveTimeout();
   }
 
-  NetworkException whenResponseException(Response response) {
+  NetworkException whenResponseException(ResponseValue response) {
     return NetworkException.responseException(response);
   }
 

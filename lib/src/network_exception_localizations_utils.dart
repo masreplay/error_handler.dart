@@ -1,9 +1,8 @@
-import 'package:dio/dio.dart';
-import 'package:error_handler/src/network_exception.dart';
+import 'package:error_handler/error_handler.dart';
 import 'package:error_handler/src/network_exception_localizations.dart';
 import 'package:error_handler/src/network_exception_localizations_default.dart';
 
-typedef ResponseTranslateCallback = String Function(Response response)?;
+typedef ResponseTranslateCallback = String Function(ResponseValue response)?;
 
 extension NetworkErrorExtension on NetworkException {
   String getLocalizedErrorMessage(
@@ -11,7 +10,7 @@ extension NetworkErrorExtension on NetworkException {
     ResponseTranslateCallback? httpErrorStringCallBack,
   }) =>
       when(
-        responseException: (Response response) =>
+        responseException: (ResponseValue response) =>
             httpErrorStringCallBack?.call(response) ??
             translation.responseException,
         requestCancelled: () => translation.requestCancelled,

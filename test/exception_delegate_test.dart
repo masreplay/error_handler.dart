@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
+import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
-import 'package:http_mock_adapter/http_mock_adapter.dart';
 
 class ProjectNetworkExceptionDelegate extends NetworkExceptionDelegate {
   @override
-  NetworkException whenResponseException(Response response) {
+  NetworkException whenResponseException(ResponseValue response) {
     if (response.statusCode == 500) {
       return NetworkException.unexpectedError();
     }

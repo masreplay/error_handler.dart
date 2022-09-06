@@ -21,7 +21,8 @@ mixin _$NetworkException<T extends Exception> {
     required TResult Function() connectTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
-    required TResult Function(Response<dynamic> response) responseException,
+    required TResult Function(ResponseValue<dynamic> response)
+        responseException,
     required TResult Function() requestCancelled,
     required TResult Function() otherException,
     required TResult Function() noInternetConnection,
@@ -35,7 +36,7 @@ mixin _$NetworkException<T extends Exception> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -49,7 +50,7 @@ mixin _$NetworkException<T extends Exception> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -167,7 +168,8 @@ class _$ConnectTimeout<T extends Exception> implements ConnectTimeout<T> {
     required TResult Function() connectTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
-    required TResult Function(Response<dynamic> response) responseException,
+    required TResult Function(ResponseValue<dynamic> response)
+        responseException,
     required TResult Function() requestCancelled,
     required TResult Function() otherException,
     required TResult Function() noInternetConnection,
@@ -184,7 +186,7 @@ class _$ConnectTimeout<T extends Exception> implements ConnectTimeout<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -201,7 +203,7 @@ class _$ConnectTimeout<T extends Exception> implements ConnectTimeout<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -323,7 +325,8 @@ class _$SendTimeout<T extends Exception> implements SendTimeout<T> {
     required TResult Function() connectTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
-    required TResult Function(Response<dynamic> response) responseException,
+    required TResult Function(ResponseValue<dynamic> response)
+        responseException,
     required TResult Function() requestCancelled,
     required TResult Function() otherException,
     required TResult Function() noInternetConnection,
@@ -340,7 +343,7 @@ class _$SendTimeout<T extends Exception> implements SendTimeout<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -357,7 +360,7 @@ class _$SendTimeout<T extends Exception> implements SendTimeout<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -478,7 +481,8 @@ class _$ReceiveTimeout<T extends Exception> implements ReceiveTimeout<T> {
     required TResult Function() connectTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
-    required TResult Function(Response<dynamic> response) responseException,
+    required TResult Function(ResponseValue<dynamic> response)
+        responseException,
     required TResult Function() requestCancelled,
     required TResult Function() otherException,
     required TResult Function() noInternetConnection,
@@ -495,7 +499,7 @@ class _$ReceiveTimeout<T extends Exception> implements ReceiveTimeout<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -512,7 +516,7 @@ class _$ReceiveTimeout<T extends Exception> implements ReceiveTimeout<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -595,7 +599,7 @@ abstract class _$$ResponseExceptionCopyWith<T extends Exception, $Res> {
   factory _$$ResponseExceptionCopyWith(_$ResponseException<T> value,
           $Res Function(_$ResponseException<T>) then) =
       __$$ResponseExceptionCopyWithImpl<T, $Res>;
-  $Res call({Response<dynamic> response});
+  $Res call({ResponseValue<dynamic> response});
 }
 
 /// @nodoc
@@ -617,7 +621,7 @@ class __$$ResponseExceptionCopyWithImpl<T extends Exception, $Res>
       response == freezed
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as Response<dynamic>,
+              as ResponseValue<dynamic>,
     ));
   }
 }
@@ -628,7 +632,7 @@ class _$ResponseException<T extends Exception> implements ResponseException<T> {
   const _$ResponseException(this.response);
 
   @override
-  final Response<dynamic> response;
+  final ResponseValue<dynamic> response;
 
   @override
   String toString() {
@@ -659,7 +663,8 @@ class _$ResponseException<T extends Exception> implements ResponseException<T> {
     required TResult Function() connectTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
-    required TResult Function(Response<dynamic> response) responseException,
+    required TResult Function(ResponseValue<dynamic> response)
+        responseException,
     required TResult Function() requestCancelled,
     required TResult Function() otherException,
     required TResult Function() noInternetConnection,
@@ -676,7 +681,7 @@ class _$ResponseException<T extends Exception> implements ResponseException<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -693,7 +698,7 @@ class _$ResponseException<T extends Exception> implements ResponseException<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -768,10 +773,10 @@ class _$ResponseException<T extends Exception> implements ResponseException<T> {
 
 abstract class ResponseException<T extends Exception>
     implements NetworkException<T> {
-  const factory ResponseException(final Response<dynamic> response) =
+  const factory ResponseException(final ResponseValue<dynamic> response) =
       _$ResponseException<T>;
 
-  Response<dynamic> get response;
+  ResponseValue<dynamic> get response;
   @JsonKey(ignore: true)
   _$$ResponseExceptionCopyWith<T, _$ResponseException<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -821,7 +826,8 @@ class _$RequestCancelled<T extends Exception> implements RequestCancelled<T> {
     required TResult Function() connectTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
-    required TResult Function(Response<dynamic> response) responseException,
+    required TResult Function(ResponseValue<dynamic> response)
+        responseException,
     required TResult Function() requestCancelled,
     required TResult Function() otherException,
     required TResult Function() noInternetConnection,
@@ -838,7 +844,7 @@ class _$RequestCancelled<T extends Exception> implements RequestCancelled<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -855,7 +861,7 @@ class _$RequestCancelled<T extends Exception> implements RequestCancelled<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -977,7 +983,8 @@ class _$OtherException<T extends Exception> implements OtherException<T> {
     required TResult Function() connectTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
-    required TResult Function(Response<dynamic> response) responseException,
+    required TResult Function(ResponseValue<dynamic> response)
+        responseException,
     required TResult Function() requestCancelled,
     required TResult Function() otherException,
     required TResult Function() noInternetConnection,
@@ -994,7 +1001,7 @@ class _$OtherException<T extends Exception> implements OtherException<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -1011,7 +1018,7 @@ class _$OtherException<T extends Exception> implements OtherException<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -1136,7 +1143,8 @@ class _$NoInternetConnection<T extends Exception>
     required TResult Function() connectTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
-    required TResult Function(Response<dynamic> response) responseException,
+    required TResult Function(ResponseValue<dynamic> response)
+        responseException,
     required TResult Function() requestCancelled,
     required TResult Function() otherException,
     required TResult Function() noInternetConnection,
@@ -1153,7 +1161,7 @@ class _$NoInternetConnection<T extends Exception>
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -1170,7 +1178,7 @@ class _$NoInternetConnection<T extends Exception>
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -1294,7 +1302,8 @@ class _$UnableToProcessData<T extends Exception>
     required TResult Function() connectTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
-    required TResult Function(Response<dynamic> response) responseException,
+    required TResult Function(ResponseValue<dynamic> response)
+        responseException,
     required TResult Function() requestCancelled,
     required TResult Function() otherException,
     required TResult Function() noInternetConnection,
@@ -1311,7 +1320,7 @@ class _$UnableToProcessData<T extends Exception>
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -1328,7 +1337,7 @@ class _$UnableToProcessData<T extends Exception>
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -1450,7 +1459,8 @@ class _$UnexpectedError<T extends Exception> implements UnexpectedError<T> {
     required TResult Function() connectTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
-    required TResult Function(Response<dynamic> response) responseException,
+    required TResult Function(ResponseValue<dynamic> response)
+        responseException,
     required TResult Function() requestCancelled,
     required TResult Function() otherException,
     required TResult Function() noInternetConnection,
@@ -1467,7 +1477,7 @@ class _$UnexpectedError<T extends Exception> implements UnexpectedError<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -1484,7 +1494,7 @@ class _$UnexpectedError<T extends Exception> implements UnexpectedError<T> {
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -1633,7 +1643,8 @@ class _$UserDefinedException<T extends Exception>
     required TResult Function() connectTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
-    required TResult Function(Response<dynamic> response) responseException,
+    required TResult Function(ResponseValue<dynamic> response)
+        responseException,
     required TResult Function() requestCancelled,
     required TResult Function() otherException,
     required TResult Function() noInternetConnection,
@@ -1650,7 +1661,7 @@ class _$UserDefinedException<T extends Exception>
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,
@@ -1667,7 +1678,7 @@ class _$UserDefinedException<T extends Exception>
     TResult Function()? connectTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
-    TResult Function(Response<dynamic> response)? responseException,
+    TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
     TResult Function()? otherException,
     TResult Function()? noInternetConnection,

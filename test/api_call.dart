@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:error_handler/src/https_response.dart';
+import 'package:error_handler/error_handler.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 
 import 'models.dart';
@@ -21,5 +21,5 @@ FutureResponse<User> getUser(Map<String, dynamic> data) async {
 
   final response = await dio.get(path);
 
-  return HttpResponse(User.fromJson(response.data), response);
+  return response.to(User.fromJson);
 }

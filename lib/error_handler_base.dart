@@ -45,7 +45,7 @@ Stream<ResultState<T>> safeApiCall<T>(
 }
 
 Future<ResultState<T>> safeApiCallFuture<T>(
-  Future<HttpResponse<T>> Function() apiCall, {
+  Future<HttpResponse<T, dynamic>> Function() apiCall, {
   LoggingCallback<T>? logger,
   NetworkExceptionDelegate delegate = const NetworkExceptionDelegateDefault(),
 }) async {

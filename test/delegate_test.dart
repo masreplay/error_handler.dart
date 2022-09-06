@@ -3,12 +3,11 @@ import 'package:error_handler/error_handler.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:test/test.dart';
 
-import '_.dart';
 import 'models.dart';
 
 class UserTypeNetworkExceptionDelegate extends NetworkExceptionDelegate {
   @override
-  NetworkException whenResponseException(Response response) {
+  NetworkException whenResponseException(ResponseValue response) {
     if (response.data["userType"] == "Agent") {
       return NetworkException.unexpectedError();
     }
@@ -34,7 +33,7 @@ FutureResponse<User> getUser(Map<String, dynamic> data) async {
 
   final response = await dio.get(path);
 
-  return HttpResponse(User.fromJson(response.data), response);
+  return response.to(User.fromJson);
 }
 
 void main() {
@@ -44,7 +43,9 @@ void main() {
       test("if Model.fromJson() failed", () async {
         final state = await safeApiCallFuture<User>(
           () => getUser({"message": "Hello"}),
-          logger: testLogger,
+          logger: (resultState, error, trace) {
+            print(resultState);
+          },
         );
 
         state.whenOrNull(
