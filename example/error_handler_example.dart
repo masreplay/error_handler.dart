@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/src/http_response_extension.dart';
 
 import 'post.dart';
 

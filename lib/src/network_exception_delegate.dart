@@ -1,5 +1,4 @@
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/src/network_exception.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // enum DioErrorType {
