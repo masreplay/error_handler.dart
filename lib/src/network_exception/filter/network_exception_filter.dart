@@ -8,6 +8,7 @@ typedef NetworkExceptionFilter = NetworkExceptionDelegate;
 abstract class NetworkExceptionDelegate {
   const NetworkExceptionDelegate();
 
+
   NetworkException whenConnectTimeout() {
     return const NetworkException.connectTimeout();
   }

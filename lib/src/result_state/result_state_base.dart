@@ -24,5 +24,5 @@ class ResultState<T> with _$ResultState<T> {
     required ResponseValue<dynamic> response,
   }) = Data<T>;
 
-  const factory ResultState.error(NetworkException error) = Error<T>;
+  const factory ResultState.error(NetworkException exception) = Error<T>;
 }

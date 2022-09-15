@@ -27,7 +27,7 @@ class ErrorHandler<T> {
 
     /// first value get yield it's [Loading] by default
     /// and it should be either [Loading] or [Idle]
-    ResultState<State> /* Loading | Idle */ firstState = const ResultState.loading(),
+    ResultState<State> /* Loading | Idle */ firstState = const Loading(),
   }) async* {
     assert(
       firstState is Loading || firstState is Idle,
@@ -35,7 +35,7 @@ class ErrorHandler<T> {
     );
 
     logger?.call(firstState, null, null);
-    yield firstState ;
+    yield firstState;
 
     try {
       final value = await apiCall();
@@ -63,10 +63,8 @@ class ErrorHandler<T> {
   }
 
   FutureState<State> future<State>(
-    FutureResponse<State> Function() apiCall, {
-    LoggingCallback<State>? logger,
-    NetworkExceptionDelegate delegate = const NetworkExceptionFilterDefault(),
-  }) async {
+    FutureResponse<State> Function() apiCall,
+  ) async {
     try {
       final value = await apiCall();
 
@@ -81,7 +79,7 @@ class ErrorHandler<T> {
     } catch (e, trace) {
       final networkException = NetworkException.getNetworkException(
         e,
-        delegate: delegate,
+        delegate: filter,
       );
 
       final errorResult = networkException.asError<State>();
