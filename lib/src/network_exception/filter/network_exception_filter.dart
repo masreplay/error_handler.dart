@@ -1,30 +1,10 @@
 import 'package:error_handler/error_handler.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-// enum DioErrorType {
-//   /// It occurs when url is opened timeout.
-//   connectTimeout,
-
-//   /// It occurs when url is sent timeout.
-//   sendTimeout,
-
-//   ///It occurs when receiving timeout.
-//   receiveTimeout,
-
-//   /// When the server response, but with a incorrect status, such as 404, 503...
-//   response,
-
-//   /// When the request is cancelled, dio will throw a error with this type.
-//   cancel,
-
-//   /// Default error type, Some other Error. In this case, you can
-//   /// use the DioError.error if it is not null.
-//   other,
-// }
-
 typedef NetworkExceptionFilter = NetworkExceptionDelegate;
 
 /// Replace [NetworkException] Default error type
+// TODO(masreplay): add example here
 abstract class NetworkExceptionDelegate {
   const NetworkExceptionDelegate();
 
@@ -65,10 +45,8 @@ abstract class NetworkExceptionDelegate {
   }
 }
 
-typedef NetworkExceptionFilterDefault = NetworkExceptionDelegateDefault;
-
 /// Default implementations of [NetworkExceptionDelegate]
 @internal
-class NetworkExceptionDelegateDefault extends NetworkExceptionDelegate {
-  const NetworkExceptionDelegateDefault();
+class NetworkExceptionFilterDefault extends NetworkExceptionDelegate {
+  const NetworkExceptionFilterDefault();
 }

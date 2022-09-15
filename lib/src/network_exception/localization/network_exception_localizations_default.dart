@@ -1,4 +1,6 @@
-import 'package:error_handler/src/network_exception_localizations.dart';
+
+
+import 'package:error_handler/src/network_exception/localization/network_exception_localizations.dart';
 
 class NetworkErrorLocalizationsDefault implements NetworkErrorLocalizations {
   @override

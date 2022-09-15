@@ -1,15 +1,15 @@
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/result_state_calls.dart';
-import 'package:error_handler/src/network_exception_delegate.dart';
+import 'package:error_handler/src/network_exception/filter/network_exception_filter.dart';
+import 'package:error_handler/src/network_exception/network_exception_extension.dart';
 
+// singleton instance of errorHandler
+final errorHandler = ErrorHandler();
+
+// TODO(masreplay): docs
 class ErrorHandler<T> {
   /// if null use [stateLogger]
   // TODO(masreplay): replace with list of loggers
   final LoggingCallback? logger;
-
-  /// first value returned or yield by [ErrorHandler.stream] it's [Loading] by default
-  /// should be either [Loading] or [Idle]
-  final ResultState<Never> /* Loading | Idle */ firstState;
 
   /// change error type [NetworkException] depend on conditions
   // TODO(masreplay): replace with list of filters
@@ -17,16 +17,25 @@ class ErrorHandler<T> {
 
   const ErrorHandler({
     this.logger,
-    this.firstState = const ResultState.loading(),
     this.filter = const NetworkExceptionFilterDefault(),
-  }) : assert(
-          firstState is Loading || firstState is Idle,
-          "ErrorHandler firstState should be either ResultState.loading() or ResultState.idle() of type Never ErrorHandler(firstState: ResultState.loading())",
-        );
+  });
 
-  StreamState<State> stream<State>(ApiCall<State> apiCall) async* {
+  /// return [apiCall] states when it gets changed
+  /// first return the [firstState]
+  StreamState<State> stream<State>(
+    ApiCall<State> apiCall, {
+
+    /// first value get yield it's [Loading] by default
+    /// and it should be either [Loading] or [Idle]
+    ResultState<State> /* Loading | Idle */ firstState = const ResultState.loading(),
+  }) async* {
+    assert(
+      firstState is Loading || firstState is Idle,
+      "ErrorHandler firstState should be either ResultState.loading() or ResultState.idle() of type Never ErrorHandler(firstState: ResultState.loading())",
+    );
+
     logger?.call(firstState, null, null);
-    yield firstState;
+    yield firstState ;
 
     try {
       final value = await apiCall();
@@ -45,7 +54,7 @@ class ErrorHandler<T> {
         delegate: filter,
       );
 
-      final errorResult = ResultState<State>.error(networkException);
+      final errorResult = networkException.asError<State>();
 
       logger?.call(errorResult, e, trace);
 
@@ -56,7 +65,7 @@ class ErrorHandler<T> {
   FutureState<State> future<State>(
     FutureResponse<State> Function() apiCall, {
     LoggingCallback<State>? logger,
-    NetworkExceptionDelegate delegate = const NetworkExceptionDelegateDefault(),
+    NetworkExceptionDelegate delegate = const NetworkExceptionFilterDefault(),
   }) async {
     try {
       final value = await apiCall();
@@ -75,7 +84,7 @@ class ErrorHandler<T> {
         delegate: delegate,
       );
 
-      final errorResult = ResultState<State>.error(networkException);
+      final errorResult = networkException.asError<State>();
 
       logger?.call(errorResult, e, trace);
 

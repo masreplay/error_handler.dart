@@ -1,7 +1,7 @@
 import 'package:error_handler/error_handler.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'result_state.freezed.dart';
+part 'result_state_base.freezed.dart';
 
 /// proxy typedef for [ResultState]
 typedef UiState<T> = ResultState<T>;
@@ -9,7 +9,7 @@ typedef UiState<T> = ResultState<T>;
 /// proxy typedef for [ResultState]
 typedef ApiResponse<T> = ResultState<T>;
 
-/// State of result it could [Data], [Error], [Idle], [Loading]
+/// state of the result it could [Data], [Error], [Idle], [Loading]
 ///
 /// use other typedef like [UiState], [ApiResponse]
 @Freezed()

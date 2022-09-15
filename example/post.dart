@@ -19,4 +19,6 @@ class Post {
       body: json["body"] as String,
     );
   }
+
+  
 }

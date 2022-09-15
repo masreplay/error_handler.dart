@@ -1,6 +1,5 @@
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/result_state_calls.dart';
-import 'package:error_handler/src/network_exception_delegate.dart';
+import 'package:error_handler/src/network_exception/filter/network_exception_filter.dart';
 
 /// simple use of [ErrorHandler.stream]
 StreamState<T> safeApiCall<T>(
@@ -11,10 +10,9 @@ StreamState<T> safeApiCall<T>(
 }) async* {
   final errorHandler = ErrorHandler<T>(
     filter: filter,
-    firstState: firstState as ResultState<Never>,
     logger: logger != null ? logger as LoggingCallback<dynamic> : stateLogger,
   );
-  yield* errorHandler.stream(apiCall);
+  yield* errorHandler.stream(apiCall, firstState: firstState);
 }
 
 /// simple use of [ErrorHandler.future]

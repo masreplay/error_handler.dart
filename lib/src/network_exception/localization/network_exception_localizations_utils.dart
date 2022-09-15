@@ -1,6 +1,4 @@
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/src/network_exception_localizations.dart';
-import 'package:error_handler/src/network_exception_localizations_default.dart';
 
 typedef ResponseTranslateCallback = String Function(ResponseValue response)?;
 

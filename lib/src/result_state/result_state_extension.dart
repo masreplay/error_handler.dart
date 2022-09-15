@@ -1,4 +1,4 @@
-import 'package:error_handler/src/result_state.dart';
+import 'package:error_handler/error_handler.dart';
 
 extension ResultStateExtension<T> on ResultState<T> {
   bool get isIdle => this is Idle<T>;

@@ -10,6 +10,7 @@ Welcome to [Perfect Error Handler](https://pub.dev/packages/error_handler), erro
 - logger for states
 - built above freezed
 - function tear-off if possible
+- **work with any client**
 - built on Dio so it covers all types of exceptions also you can add your own!
 - [chopper](https://pub.dev/packages/chopper) support
 

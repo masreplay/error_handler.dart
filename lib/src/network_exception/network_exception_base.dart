@@ -2,12 +2,14 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/src/network_exception_delegate.dart';
+import 'package:error_handler/src/network_exception/filter/network_exception_filter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'network_exception.freezed.dart';
+part 'network_exception_base.freezed.dart';
 
-/// Unify all possible [Exception] came from [Dio] request
+/// used to union all possible [Exception] came from [Dio] request
+///
+/// [Freezed] based class
 @Freezed(unionKey: "dioException", map: null, copyWith: true)
 class NetworkException<T extends Exception> with _$NetworkException {
   const factory NetworkException.connectTimeout() = ConnectTimeout;
@@ -35,7 +37,7 @@ class NetworkException<T extends Exception> with _$NetworkException {
   /// Provide [Freezed.when] exception (connect [Freezed] with errors)
   static NetworkException getNetworkException(
     Object error, {
-    NetworkExceptionDelegate delegate = const NetworkExceptionDelegateDefault(),
+    NetworkExceptionDelegate delegate = const NetworkExceptionFilterDefault(),
   }) {
     if (error is Exception) {
       try {
