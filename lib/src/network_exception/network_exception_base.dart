@@ -11,7 +11,7 @@ part 'network_exception_base.freezed.dart';
 ///
 /// [Freezed] based class
 @Freezed(unionKey: "dioException", map: null, copyWith: true)
-class NetworkException<T extends Exception> with _$NetworkException {
+class NetworkException with _$NetworkException {
   const factory NetworkException.connectTimeout() = ConnectTimeout;
 
   const factory NetworkException.sendTimeout() = SendTimeout;
@@ -31,8 +31,8 @@ class NetworkException<T extends Exception> with _$NetworkException {
 
   const factory NetworkException.unexpectedError() = UnexpectedError;
 
-  factory NetworkException.userDefinedException(T error) =
-      UserDefinedException<T>;
+  factory NetworkException.definedException(Exception exception) =
+      UserDefinedException;
 
   /// Provide [Freezed.when] exception (connect [Freezed] with errors)
   static NetworkException getNetworkException(

@@ -1,4 +1,7 @@
-## 1.0.4
+## 1.0.5-dev
+- change userDefinedException to definedException every where
+- 
+## 1.0.4-dev
 
 - add base class ErrorHandler
 - support both stream returning and future too
