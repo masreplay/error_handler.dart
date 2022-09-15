@@ -22,6 +22,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 //   other,
 // }
 
+typedef NetworkExceptionFilter = NetworkExceptionDelegate;
+
 /// Replace [NetworkException] Default error type
 abstract class NetworkExceptionDelegate {
   const NetworkExceptionDelegate();
@@ -62,6 +64,8 @@ abstract class NetworkExceptionDelegate {
     return const NetworkException.unexpectedError();
   }
 }
+
+typedef NetworkExceptionFilterDefault = NetworkExceptionDelegateDefault;
 
 /// Default implementations of [NetworkExceptionDelegate]
 @internal

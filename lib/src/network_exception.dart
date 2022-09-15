@@ -33,7 +33,7 @@ class NetworkException<T extends Exception> with _$NetworkException {
       UserDefinedException<T>;
 
   /// Provide [Freezed.when] exception (connect [Freezed] with errors)
-  static NetworkException getDioException(
+  static NetworkException getNetworkException(
     Object error, {
     NetworkExceptionDelegate delegate = const NetworkExceptionDelegateDefault(),
   }) {

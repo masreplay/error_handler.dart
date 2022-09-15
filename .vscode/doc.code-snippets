@@ -1,0 +1,31 @@
+{
+  "doc template": {
+    "scope": "dart",
+    "prefix": "docTemplate",
+    "body": [
+      "/// $1",
+      "/// ",
+      "/// $2",
+      "/// ",
+      "/// ## Example: $3",
+      "/// ",
+      "/// ",
+      "/// ```dart",
+      "/// ",
+      "/// ```",
+      "/// ",
+      "/// See also:",
+      "/// ",
+      "/// - [$4],",
+    ]
+  },
+  "doc dart code": {
+    "scope": "dart",
+    "prefix": "docDart",
+    "body": [
+      "/// ```dart",
+      "/// $1",
+      "/// ```",
+    ]
+  }
+}

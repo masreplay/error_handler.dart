@@ -1,8 +1,6 @@
-import 'package:error_handler/error_handler_base.dart';
-import 'package:error_handler/src/network_exception.dart';
+import 'package:error_handler/error_handler.dart';
 import 'package:test/test.dart';
 
-import '_.dart';
 import 'api_call.dart';
 import 'models.dart';
 
@@ -11,10 +9,9 @@ void main() {
     "UnableToProcessData exception",
     () {
       test("if Model.fromJson() failed", () async {
-        final state = await safeApiCallFuture<User>(
-          () => getUser({"message": "Hello"}),
-          logger: testLogger,
-        );
+        final state = await safeApiCallFuture<User>(() {
+          return getUser({"message": "Hello"});
+        });
 
         state.whenOrNull(
           data: (data, statusCode) {

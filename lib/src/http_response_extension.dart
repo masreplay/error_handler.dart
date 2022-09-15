@@ -25,6 +25,7 @@ typedef ChopperHttpResponse<RT> = HttpResponse<RT, chopper.Response<RT>>;
 typedef FutureChopperResponse<RT> = Future<chopper.Response<RT>>;
 
 extension HttpResponseChopperExtension<RT> on chopper.Response<RT> {
+  /// convert [chopper.Response] to [HttpResponse]
   ChopperHttpResponse convert<T>(ChopperResponse<T> convert) {
     return ChopperHttpResponse(
       convert(body as dynamic),

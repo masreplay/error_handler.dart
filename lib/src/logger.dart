@@ -5,6 +5,7 @@ typedef LoggingCallback<T> = void Function(
   Object? error,
   StackTrace? trace,
 );
+
 void stateLogger<T>(
   ResultState<T> resultState,
   Object? error,

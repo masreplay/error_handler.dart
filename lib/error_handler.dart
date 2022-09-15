@@ -11,6 +11,7 @@ export 'src/logger.dart';
 export 'src/http_response.dart';
 export 'src/http_response_extension.dart';
 export 'error_handler_base.dart';
+export 'error_handler_direct.dart';
 
 export 'src/network_exception_delegate.dart' show NetworkExceptionDelegate;
 export 'src/network_exception_localizations_utils.dart';
