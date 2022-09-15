@@ -5,7 +5,7 @@ import 'client/_.dart';
 
 class UserTypeException implements Exception {}
 
-class UserTypeNetworkExceptionFilter extends NetworkExceptionDelegate {
+class UserTypeNetworkExceptionFilter extends NetworkExceptionFilter {
   @override
   NetworkException whenResponseException(ResponseValue response) {
     if (response.data["userType"] == "Agent") {
@@ -18,7 +18,7 @@ class UserTypeNetworkExceptionFilter extends NetworkExceptionDelegate {
 
 void main() {
   group("filter", () {
-    test("NetworkException.userDefinedException", () async {
+    test("NetworkException.definedException", () async {
       final errorHandler = ErrorHandler();
       final state = await errorHandler.future(getPost);
 
@@ -26,6 +26,7 @@ void main() {
         error: (error) {
           error.whenOrNull(
             definedException: (Exception exception) {
+              
               if (exception is UserTypeException) {
                 print("Hello");
               }

@@ -51,7 +51,7 @@ class ErrorHandler<T> {
     } catch (e, trace) {
       final networkException = NetworkException.getNetworkException(
         e,
-        delegate: filter,
+        filter: filter,
       );
 
       final errorResult = networkException.asError<State>();
@@ -79,7 +79,7 @@ class ErrorHandler<T> {
     } catch (e, trace) {
       final networkException = NetworkException.getNetworkException(
         e,
-        delegate: filter,
+        filter: filter,
       );
 
       final errorResult = networkException.asError<State>();

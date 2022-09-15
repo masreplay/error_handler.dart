@@ -1,13 +1,15 @@
 import 'package:error_handler/error_handler.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+// ignore: deprecated_member_use_from_same_package
 typedef NetworkExceptionFilter = NetworkExceptionDelegate;
 
 /// Replace [NetworkException] Default error type
 // TODO(masreplay): add example here
+
+@Deprecated("renamed to NetworkExceptionFilter")
 abstract class NetworkExceptionDelegate {
   const NetworkExceptionDelegate();
-
 
   NetworkException whenConnectTimeout() {
     return const NetworkException.connectTimeout();
@@ -46,8 +48,8 @@ abstract class NetworkExceptionDelegate {
   }
 }
 
-/// Default implementations of [NetworkExceptionDelegate]
+/// Default implementations of [NetworkExceptionFilter]
 @internal
-class NetworkExceptionFilterDefault extends NetworkExceptionDelegate {
+class NetworkExceptionFilterDefault extends NetworkExceptionFilter {
   const NetworkExceptionFilterDefault();
 }

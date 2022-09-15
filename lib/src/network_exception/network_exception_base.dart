@@ -35,29 +35,30 @@ class NetworkException with _$NetworkException {
       UserDefinedException;
 
   /// Provide [Freezed.when] exception (connect [Freezed] with errors)
+  @internal
   static NetworkException getNetworkException(
     Object error, {
-    NetworkExceptionDelegate delegate = const NetworkExceptionFilterDefault(),
+    NetworkExceptionFilter filter = const NetworkExceptionFilterDefault(),
   }) {
     if (error is Exception) {
       try {
         if (error is DioError) {
           switch (error.type) {
             case DioErrorType.connectTimeout:
-              return delegate.whenConnectTimeout();
+              return filter.whenConnectTimeout();
             case DioErrorType.sendTimeout:
-              return delegate.whenSendTimeout();
+              return filter.whenSendTimeout();
             case DioErrorType.cancel:
-              return delegate.whenReceiveTimeout();
+              return filter.whenReceiveTimeout();
             case DioErrorType.receiveTimeout:
-              return delegate.whenReceiveTimeout();
+              return filter.whenReceiveTimeout();
             case DioErrorType.response:
               final response = error.response!;
-              return delegate.whenResponseException(
+              return filter.whenResponseException(
                 ResponseValue(response.data, response.statusCode),
               );
             case DioErrorType.other:
-              return delegate.whenOtherException();
+              return filter.whenOtherException();
           }
         } else if (error is SocketException) {
           return const NetworkException.noInternetConnection();

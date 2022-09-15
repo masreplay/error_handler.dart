@@ -4,7 +4,7 @@ import 'error_handler_example.dart';
 
 class UserTypeException implements Exception {}
 
-class UserTypeNetworkExceptionFilter extends NetworkExceptionDelegate {
+class UserTypeNetworkExceptionFilter extends NetworkExceptionFilter {
   @override
   NetworkException whenResponseException(ResponseValue response) {
     if (response.data["userType"] == "Agent") {
