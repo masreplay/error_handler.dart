@@ -1,3 +1,7 @@
+## 1.0.4
+
+- mark as stable
+
 ## 1.0.3-dev
 
 - breaking changes
