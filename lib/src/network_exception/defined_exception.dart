@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:error_handler/error_handler.dart';
 
-typedef DefinedCall = FutureOr<void> Function(DefinedNetworkError exception);
+typedef DefinedCall = FutureOr<void> Function(DefinedNetworkError error);
 typedef DefinedOrElse = FutureOr<void> Function();
 
 /// used with [NetworkExceptionFilter] to define new error type

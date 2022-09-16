@@ -47,40 +47,31 @@ flutter pub add dio
 ```dart
 import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
-import 'post.dart';
-
 
 /// first create [Dio] api call
 FutureResponse<Post> getPost() async {
-  final dio = Dio();
+  const path = "https://jsonplaceholder.typicode.com/posts/1";
 
-  final response = await dio.get("https://jsonplaceholder.typicode.com/posts/1");
-
-  return HttpResponse(Post.fromJson(response.data), response);
+  final response = await Dio().get(path);
+  return response.convert(Post.fromJson);
 }
 
-/// wrap the api call with [safeApiCall]
-void main() {
-  safeApiCall(getPost).listen((event) {
-    event.when(
-      idle: () {
-        print("init");
-      },
-      loading: () {
-        print("loading...");
-      },
-      data: (post, statusCode) {
-        print("title: ${post.title}");
-      },
-      error: (error) {
-        print(getErrorMessage(error));
-      },
-    );
-  });
+/// wrap the api call with [ErrorHandler.future]
+Future<void> main() async {
+  final state = await errorHandler.future(getPost);
+
+  state.whenOrNull(
+    data: (post, response) {
+      print("title: ${post.title}");
+    },
+    error: (error) {
+      print(getErrorMessage(error));
+    },
+  );
 }
 ```
 
-**how to use safeApiCall**
+**how t**
 ```dart
 
 safeApiCall(() {

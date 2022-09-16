@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
 import 'package:error_handler/src/network_exception/defined_exception.dart';
-import 'package:test/scaffolding.dart';
 
 class User {
   final String name;
@@ -21,7 +20,7 @@ class User {
 }
 
 FutureResponse<User> login(String username, String password) async {
-  final response = await Dio().get("https://theKeySoftware.com/login");
+  final response = await Dio().get("http://theKeySoftware.com/login");
   return response.convert(User.fromJson);
 }
 
@@ -41,18 +40,14 @@ class RoleExceptionFilter extends NetworkExceptionFilter {
   }
 }
 
-void main() {
-  group("filter", () {
-    test("NetworkException.definedException", () async {
-      final handler = ErrorHandler(filter: RoleExceptionFilter());
+Future<void> main() async {
+  final handler = errorHandler.copyWith(filter: RoleExceptionFilter());
 
-      final state = await handler.future(
-        () => login("@masreplay", "password"),
-      );
+  final state = await handler.future(
+    () => login("@masreplay", "password"),
+  );
 
-      state.whenDefinedException(RoleException(), ifEqual: (exception) {
-        print("Hello there $exception");
-      });
-    });
+  state.whenDefinedException(RoleException(), ifEqual: (error) {
+    print("user don't have the action to perform such action");
   });
 }

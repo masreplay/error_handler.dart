@@ -1,5 +1,6 @@
 import 'package:error_handler/error_handler.dart';
 import 'package:error_handler/src/network_exception/defined_exception.dart';
+import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
 import 'client/user.dart';
@@ -28,8 +29,8 @@ void main() {
         () => loginError(username: "@masreplay", password: "password"),
       );
 
-      state.whenDefinedException(RoleException(), ifEqual: (exception) {
-        print("Hello there $exception");
+      state.whenDefinedException(RoleException(), ifEqual: (error) {
+        expect(error.exception, equals(RoleException()));
       });
     });
   });
