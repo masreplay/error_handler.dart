@@ -28,8 +28,11 @@ class User {
 FutureResponse<User> login({
   required String username,
   required String password,
+
+  // fake return role
+  String userType = "AGENT",
 }) async {
-  final user = User(name: "Mas", role: "AGENT");
+  final user = User(name: "Mas", role: userType);
   dioAdapter.onGet(
     path,
     (server) => server.reply(200, user.toJson(), delay: delay),

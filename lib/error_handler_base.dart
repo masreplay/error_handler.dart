@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:error_handler/data_filter.dart';
 import 'package:error_handler/error_handler.dart';
 import 'package:error_handler/src/network_exception/filter/network_exception_filter.dart';
 import 'package:error_handler/src/network_exception/network_exception_extension.dart';
@@ -63,18 +64,27 @@ class ErrorHandler<T> {
     }
   }
 
-  FutureState<State> future<State>(
-    FutureResponse<State> Function() apiCall,
-  ) async {
+  FutureOrState<State> future<State>(
+    FutureResponse<State> Function() apiCall, {
+    List<DataFilter<State>> dataFilters = const [],
+  }) async {
     try {
       final value = await apiCall();
 
+      final data = value.data;
+      final response = value.response;
+
       final dataResult = ResultState<State>.data(
-        data: value.data,
-        response: value.response,
+        data: data,
+        response: response,
       );
 
       logger?.call(dataResult, null, null);
+
+      /// change return type from [Data] to [Error]
+      for (var filter in dataFilters) {
+        return filter.handle(data, response) ?? dataResult;
+      }
 
       return dataResult;
     } catch (e, trace) {

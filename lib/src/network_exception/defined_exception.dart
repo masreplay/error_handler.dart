@@ -11,7 +11,7 @@ typedef DefinedOrElse = FutureOr<void> Function();
 /// ```dart
 /// class RoleException extends DefinedException {}
 /// ```
-class DefinedException implements Exception {
+abstract class DefinedException implements Exception {
   final String? errorMessage;
 
   const DefinedException([this.errorMessage]);
