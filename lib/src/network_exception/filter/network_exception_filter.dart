@@ -1,6 +1,30 @@
 import 'package:error_handler/error_handler.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+
+/// interceptor to change [NetworkException] type to [DefinedNetworkError]
+/// 
+/// 
+/// 
+/// ## Example: 
+/// to check if user role isn't agent
+/// 
+/// ```dart
+/// class UserTypeNEFilter extends NetworkExceptionFilter {
+///   @override
+///   NetworkException whenResponseException(ResponseValue response) {
+///     if (response.data["role"] == "Agent") {
+/// 
+///       return RoleException().get();
+///     }
+/// 
+///     return super.whenResponseException(response);
+///   }
+/// }
+/// ```
+/// 
+/// See also:
+/// 
 // ignore: deprecated_member_use_from_same_package
 typedef NetworkExceptionFilter = NetworkExceptionDelegate;
 

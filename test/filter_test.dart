@@ -1,18 +1,16 @@
 import 'package:error_handler/error_handler.dart';
-import 'package:test/expect.dart';
+import 'package:error_handler/src/network_exception/defined_exception.dart';
 import 'package:test/scaffolding.dart';
 
-import 'client/_.dart';
+import 'client/user.dart';
 
-class UserTypeException implements Exception {}
+class RoleException extends DefinedException {}
 
-class UserTypeNetworkExceptionFilter extends NetworkExceptionFilter {
+// user don't have the action to perform such action
+class UserTypeNEFilter extends NetworkExceptionFilter {
   @override
   NetworkException whenResponseException(ResponseValue response) {
-    if (response.data["userType"] == "Agent") {
-      return NetworkException.definedException(UserTypeException());
-    }
-
+    if (response.data["role"] == "Agent") return RoleException().get();
     return super.whenResponseException(response);
   }
 }
@@ -20,23 +18,18 @@ class UserTypeNetworkExceptionFilter extends NetworkExceptionFilter {
 void main() {
   group("filter", () {
     test("NetworkException.definedException", () async {
-      final errorHandler = ErrorHandler();
-      final state = await errorHandler.future(getPostError);
+      final username = "Mas";
+      final password = "password";
 
-      expect(state.isError, true);
+      final errorHandler = ErrorHandler(filter: UserTypeNEFilter());
 
-      state.whenOrNull(
-        error: (error) {
-          print(error);
-          error.whenOrNull(
-            definedException: (Exception exception) {
-              if (exception is UserTypeException) {
-                print("Hello");
-              }
-            },
-          );
-        },
+      final state = await errorHandler.future(
+        () => login(username: username, password: password),
       );
+
+      state.whenDefinedException(RoleException(), ifEqual: (exception) {
+        print("Hello there $exception");
+      });
     });
   });
 }

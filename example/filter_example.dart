@@ -1,8 +1,9 @@
 import 'package:error_handler/error_handler.dart';
+import 'package:error_handler/src/network_exception/defined_exception.dart';
 
 import 'error_handler_example.dart';
 
-class UserTypeException implements Exception {}
+class UserTypeException extends DefinedException {}
 
 class UserTypeNetworkExceptionFilter extends NetworkExceptionFilter {
   @override

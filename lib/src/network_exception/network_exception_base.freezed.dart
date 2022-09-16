@@ -28,7 +28,7 @@ mixin _$NetworkException {
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
-    required TResult Function(Exception exception) definedException,
+    required TResult Function(DefinedException exception) definedException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,7 +42,7 @@ mixin _$NetworkException {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,7 +56,7 @@ mixin _$NetworkException {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -71,7 +71,7 @@ mixin _$NetworkException {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(UnableToProcessData value) unableToProcessData,
     required TResult Function(UnexpectedError value) unexpectedError,
-    required TResult Function(UserDefinedException value) definedException,
+    required TResult Function(DefinedNetworkError value) definedException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,7 +85,7 @@ mixin _$NetworkException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -99,7 +99,7 @@ mixin _$NetworkException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -143,8 +143,8 @@ class __$$ConnectTimeoutCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ConnectTimeout implements ConnectTimeout {
-  const _$ConnectTimeout();
+class _$ConnectTimeout extends ConnectTimeout {
+  const _$ConnectTimeout() : super._();
 
   @override
   String toString() {
@@ -173,7 +173,7 @@ class _$ConnectTimeout implements ConnectTimeout {
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
-    required TResult Function(Exception exception) definedException,
+    required TResult Function(DefinedException exception) definedException,
   }) {
     return connectTimeout();
   }
@@ -190,7 +190,7 @@ class _$ConnectTimeout implements ConnectTimeout {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
   }) {
     return connectTimeout?.call();
   }
@@ -207,7 +207,7 @@ class _$ConnectTimeout implements ConnectTimeout {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
     required TResult orElse(),
   }) {
     if (connectTimeout != null) {
@@ -228,7 +228,7 @@ class _$ConnectTimeout implements ConnectTimeout {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(UnableToProcessData value) unableToProcessData,
     required TResult Function(UnexpectedError value) unexpectedError,
-    required TResult Function(UserDefinedException value) definedException,
+    required TResult Function(DefinedNetworkError value) definedException,
   }) {
     return connectTimeout(this);
   }
@@ -245,7 +245,7 @@ class _$ConnectTimeout implements ConnectTimeout {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
   }) {
     return connectTimeout?.call(this);
   }
@@ -262,7 +262,7 @@ class _$ConnectTimeout implements ConnectTimeout {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
     required TResult orElse(),
   }) {
     if (connectTimeout != null) {
@@ -272,8 +272,9 @@ class _$ConnectTimeout implements ConnectTimeout {
   }
 }
 
-abstract class ConnectTimeout implements NetworkException {
+abstract class ConnectTimeout extends NetworkException {
   const factory ConnectTimeout() = _$ConnectTimeout;
+  const ConnectTimeout._() : super._();
 }
 
 /// @nodoc
@@ -297,8 +298,8 @@ class __$$SendTimeoutCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SendTimeout implements SendTimeout {
-  const _$SendTimeout();
+class _$SendTimeout extends SendTimeout {
+  const _$SendTimeout() : super._();
 
   @override
   String toString() {
@@ -327,7 +328,7 @@ class _$SendTimeout implements SendTimeout {
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
-    required TResult Function(Exception exception) definedException,
+    required TResult Function(DefinedException exception) definedException,
   }) {
     return sendTimeout();
   }
@@ -344,7 +345,7 @@ class _$SendTimeout implements SendTimeout {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
   }) {
     return sendTimeout?.call();
   }
@@ -361,7 +362,7 @@ class _$SendTimeout implements SendTimeout {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
     required TResult orElse(),
   }) {
     if (sendTimeout != null) {
@@ -382,7 +383,7 @@ class _$SendTimeout implements SendTimeout {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(UnableToProcessData value) unableToProcessData,
     required TResult Function(UnexpectedError value) unexpectedError,
-    required TResult Function(UserDefinedException value) definedException,
+    required TResult Function(DefinedNetworkError value) definedException,
   }) {
     return sendTimeout(this);
   }
@@ -399,7 +400,7 @@ class _$SendTimeout implements SendTimeout {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
   }) {
     return sendTimeout?.call(this);
   }
@@ -416,7 +417,7 @@ class _$SendTimeout implements SendTimeout {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
     required TResult orElse(),
   }) {
     if (sendTimeout != null) {
@@ -426,8 +427,9 @@ class _$SendTimeout implements SendTimeout {
   }
 }
 
-abstract class SendTimeout implements NetworkException {
+abstract class SendTimeout extends NetworkException {
   const factory SendTimeout() = _$SendTimeout;
+  const SendTimeout._() : super._();
 }
 
 /// @nodoc
@@ -451,8 +453,8 @@ class __$$ReceiveTimeoutCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ReceiveTimeout implements ReceiveTimeout {
-  const _$ReceiveTimeout();
+class _$ReceiveTimeout extends ReceiveTimeout {
+  const _$ReceiveTimeout() : super._();
 
   @override
   String toString() {
@@ -481,7 +483,7 @@ class _$ReceiveTimeout implements ReceiveTimeout {
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
-    required TResult Function(Exception exception) definedException,
+    required TResult Function(DefinedException exception) definedException,
   }) {
     return receiveTimeout();
   }
@@ -498,7 +500,7 @@ class _$ReceiveTimeout implements ReceiveTimeout {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
   }) {
     return receiveTimeout?.call();
   }
@@ -515,7 +517,7 @@ class _$ReceiveTimeout implements ReceiveTimeout {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
     required TResult orElse(),
   }) {
     if (receiveTimeout != null) {
@@ -536,7 +538,7 @@ class _$ReceiveTimeout implements ReceiveTimeout {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(UnableToProcessData value) unableToProcessData,
     required TResult Function(UnexpectedError value) unexpectedError,
-    required TResult Function(UserDefinedException value) definedException,
+    required TResult Function(DefinedNetworkError value) definedException,
   }) {
     return receiveTimeout(this);
   }
@@ -553,7 +555,7 @@ class _$ReceiveTimeout implements ReceiveTimeout {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
   }) {
     return receiveTimeout?.call(this);
   }
@@ -570,7 +572,7 @@ class _$ReceiveTimeout implements ReceiveTimeout {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
     required TResult orElse(),
   }) {
     if (receiveTimeout != null) {
@@ -580,8 +582,9 @@ class _$ReceiveTimeout implements ReceiveTimeout {
   }
 }
 
-abstract class ReceiveTimeout implements NetworkException {
+abstract class ReceiveTimeout extends NetworkException {
   const factory ReceiveTimeout() = _$ReceiveTimeout;
+  const ReceiveTimeout._() : super._();
 }
 
 /// @nodoc
@@ -618,8 +621,8 @@ class __$$ResponseExceptionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ResponseException implements ResponseException {
-  const _$ResponseException(this.response);
+class _$ResponseException extends ResponseException {
+  const _$ResponseException(this.response) : super._();
 
   @override
   final ResponseValue<dynamic> response;
@@ -659,7 +662,7 @@ class _$ResponseException implements ResponseException {
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
-    required TResult Function(Exception exception) definedException,
+    required TResult Function(DefinedException exception) definedException,
   }) {
     return responseException(response);
   }
@@ -676,7 +679,7 @@ class _$ResponseException implements ResponseException {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
   }) {
     return responseException?.call(response);
   }
@@ -693,7 +696,7 @@ class _$ResponseException implements ResponseException {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
     required TResult orElse(),
   }) {
     if (responseException != null) {
@@ -714,7 +717,7 @@ class _$ResponseException implements ResponseException {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(UnableToProcessData value) unableToProcessData,
     required TResult Function(UnexpectedError value) unexpectedError,
-    required TResult Function(UserDefinedException value) definedException,
+    required TResult Function(DefinedNetworkError value) definedException,
   }) {
     return responseException(this);
   }
@@ -731,7 +734,7 @@ class _$ResponseException implements ResponseException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
   }) {
     return responseException?.call(this);
   }
@@ -748,7 +751,7 @@ class _$ResponseException implements ResponseException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
     required TResult orElse(),
   }) {
     if (responseException != null) {
@@ -758,9 +761,10 @@ class _$ResponseException implements ResponseException {
   }
 }
 
-abstract class ResponseException implements NetworkException {
+abstract class ResponseException extends NetworkException {
   const factory ResponseException(final ResponseValue<dynamic> response) =
       _$ResponseException;
+  const ResponseException._() : super._();
 
   ResponseValue<dynamic> get response;
   @JsonKey(ignore: true)
@@ -789,8 +793,8 @@ class __$$RequestCancelledCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RequestCancelled implements RequestCancelled {
-  const _$RequestCancelled();
+class _$RequestCancelled extends RequestCancelled {
+  const _$RequestCancelled() : super._();
 
   @override
   String toString() {
@@ -819,7 +823,7 @@ class _$RequestCancelled implements RequestCancelled {
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
-    required TResult Function(Exception exception) definedException,
+    required TResult Function(DefinedException exception) definedException,
   }) {
     return requestCancelled();
   }
@@ -836,7 +840,7 @@ class _$RequestCancelled implements RequestCancelled {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
   }) {
     return requestCancelled?.call();
   }
@@ -853,7 +857,7 @@ class _$RequestCancelled implements RequestCancelled {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
     required TResult orElse(),
   }) {
     if (requestCancelled != null) {
@@ -874,7 +878,7 @@ class _$RequestCancelled implements RequestCancelled {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(UnableToProcessData value) unableToProcessData,
     required TResult Function(UnexpectedError value) unexpectedError,
-    required TResult Function(UserDefinedException value) definedException,
+    required TResult Function(DefinedNetworkError value) definedException,
   }) {
     return requestCancelled(this);
   }
@@ -891,7 +895,7 @@ class _$RequestCancelled implements RequestCancelled {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
   }) {
     return requestCancelled?.call(this);
   }
@@ -908,7 +912,7 @@ class _$RequestCancelled implements RequestCancelled {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
     required TResult orElse(),
   }) {
     if (requestCancelled != null) {
@@ -918,8 +922,9 @@ class _$RequestCancelled implements RequestCancelled {
   }
 }
 
-abstract class RequestCancelled implements NetworkException {
+abstract class RequestCancelled extends NetworkException {
   const factory RequestCancelled() = _$RequestCancelled;
+  const RequestCancelled._() : super._();
 }
 
 /// @nodoc
@@ -943,8 +948,8 @@ class __$$OtherExceptionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$OtherException implements OtherException {
-  const _$OtherException();
+class _$OtherException extends OtherException {
+  const _$OtherException() : super._();
 
   @override
   String toString() {
@@ -973,7 +978,7 @@ class _$OtherException implements OtherException {
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
-    required TResult Function(Exception exception) definedException,
+    required TResult Function(DefinedException exception) definedException,
   }) {
     return otherException();
   }
@@ -990,7 +995,7 @@ class _$OtherException implements OtherException {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
   }) {
     return otherException?.call();
   }
@@ -1007,7 +1012,7 @@ class _$OtherException implements OtherException {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
     required TResult orElse(),
   }) {
     if (otherException != null) {
@@ -1028,7 +1033,7 @@ class _$OtherException implements OtherException {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(UnableToProcessData value) unableToProcessData,
     required TResult Function(UnexpectedError value) unexpectedError,
-    required TResult Function(UserDefinedException value) definedException,
+    required TResult Function(DefinedNetworkError value) definedException,
   }) {
     return otherException(this);
   }
@@ -1045,7 +1050,7 @@ class _$OtherException implements OtherException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
   }) {
     return otherException?.call(this);
   }
@@ -1062,7 +1067,7 @@ class _$OtherException implements OtherException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
     required TResult orElse(),
   }) {
     if (otherException != null) {
@@ -1072,8 +1077,9 @@ class _$OtherException implements OtherException {
   }
 }
 
-abstract class OtherException implements NetworkException {
+abstract class OtherException extends NetworkException {
   const factory OtherException() = _$OtherException;
+  const OtherException._() : super._();
 }
 
 /// @nodoc
@@ -1097,8 +1103,8 @@ class __$$NoInternetConnectionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NoInternetConnection implements NoInternetConnection {
-  const _$NoInternetConnection();
+class _$NoInternetConnection extends NoInternetConnection {
+  const _$NoInternetConnection() : super._();
 
   @override
   String toString() {
@@ -1127,7 +1133,7 @@ class _$NoInternetConnection implements NoInternetConnection {
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
-    required TResult Function(Exception exception) definedException,
+    required TResult Function(DefinedException exception) definedException,
   }) {
     return noInternetConnection();
   }
@@ -1144,7 +1150,7 @@ class _$NoInternetConnection implements NoInternetConnection {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
   }) {
     return noInternetConnection?.call();
   }
@@ -1161,7 +1167,7 @@ class _$NoInternetConnection implements NoInternetConnection {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
     required TResult orElse(),
   }) {
     if (noInternetConnection != null) {
@@ -1182,7 +1188,7 @@ class _$NoInternetConnection implements NoInternetConnection {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(UnableToProcessData value) unableToProcessData,
     required TResult Function(UnexpectedError value) unexpectedError,
-    required TResult Function(UserDefinedException value) definedException,
+    required TResult Function(DefinedNetworkError value) definedException,
   }) {
     return noInternetConnection(this);
   }
@@ -1199,7 +1205,7 @@ class _$NoInternetConnection implements NoInternetConnection {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
   }) {
     return noInternetConnection?.call(this);
   }
@@ -1216,7 +1222,7 @@ class _$NoInternetConnection implements NoInternetConnection {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
     required TResult orElse(),
   }) {
     if (noInternetConnection != null) {
@@ -1226,8 +1232,9 @@ class _$NoInternetConnection implements NoInternetConnection {
   }
 }
 
-abstract class NoInternetConnection implements NetworkException {
+abstract class NoInternetConnection extends NetworkException {
   const factory NoInternetConnection() = _$NoInternetConnection;
+  const NoInternetConnection._() : super._();
 }
 
 /// @nodoc
@@ -1251,8 +1258,8 @@ class __$$UnableToProcessDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UnableToProcessData implements UnableToProcessData {
-  const _$UnableToProcessData();
+class _$UnableToProcessData extends UnableToProcessData {
+  const _$UnableToProcessData() : super._();
 
   @override
   String toString() {
@@ -1281,7 +1288,7 @@ class _$UnableToProcessData implements UnableToProcessData {
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
-    required TResult Function(Exception exception) definedException,
+    required TResult Function(DefinedException exception) definedException,
   }) {
     return unableToProcessData();
   }
@@ -1298,7 +1305,7 @@ class _$UnableToProcessData implements UnableToProcessData {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
   }) {
     return unableToProcessData?.call();
   }
@@ -1315,7 +1322,7 @@ class _$UnableToProcessData implements UnableToProcessData {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
     required TResult orElse(),
   }) {
     if (unableToProcessData != null) {
@@ -1336,7 +1343,7 @@ class _$UnableToProcessData implements UnableToProcessData {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(UnableToProcessData value) unableToProcessData,
     required TResult Function(UnexpectedError value) unexpectedError,
-    required TResult Function(UserDefinedException value) definedException,
+    required TResult Function(DefinedNetworkError value) definedException,
   }) {
     return unableToProcessData(this);
   }
@@ -1353,7 +1360,7 @@ class _$UnableToProcessData implements UnableToProcessData {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
   }) {
     return unableToProcessData?.call(this);
   }
@@ -1370,7 +1377,7 @@ class _$UnableToProcessData implements UnableToProcessData {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
     required TResult orElse(),
   }) {
     if (unableToProcessData != null) {
@@ -1380,8 +1387,9 @@ class _$UnableToProcessData implements UnableToProcessData {
   }
 }
 
-abstract class UnableToProcessData implements NetworkException {
+abstract class UnableToProcessData extends NetworkException {
   const factory UnableToProcessData() = _$UnableToProcessData;
+  const UnableToProcessData._() : super._();
 }
 
 /// @nodoc
@@ -1405,8 +1413,8 @@ class __$$UnexpectedErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UnexpectedError implements UnexpectedError {
-  const _$UnexpectedError();
+class _$UnexpectedError extends UnexpectedError {
+  const _$UnexpectedError() : super._();
 
   @override
   String toString() {
@@ -1435,7 +1443,7 @@ class _$UnexpectedError implements UnexpectedError {
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
-    required TResult Function(Exception exception) definedException,
+    required TResult Function(DefinedException exception) definedException,
   }) {
     return unexpectedError();
   }
@@ -1452,7 +1460,7 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
   }) {
     return unexpectedError?.call();
   }
@@ -1469,7 +1477,7 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
     required TResult orElse(),
   }) {
     if (unexpectedError != null) {
@@ -1490,7 +1498,7 @@ class _$UnexpectedError implements UnexpectedError {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(UnableToProcessData value) unableToProcessData,
     required TResult Function(UnexpectedError value) unexpectedError,
-    required TResult Function(UserDefinedException value) definedException,
+    required TResult Function(DefinedNetworkError value) definedException,
   }) {
     return unexpectedError(this);
   }
@@ -1507,7 +1515,7 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
   }) {
     return unexpectedError?.call(this);
   }
@@ -1524,7 +1532,7 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
     required TResult orElse(),
   }) {
     if (unexpectedError != null) {
@@ -1534,49 +1542,50 @@ class _$UnexpectedError implements UnexpectedError {
   }
 }
 
-abstract class UnexpectedError implements NetworkException {
+abstract class UnexpectedError extends NetworkException {
   const factory UnexpectedError() = _$UnexpectedError;
+  const UnexpectedError._() : super._();
 }
 
 /// @nodoc
-abstract class _$$UserDefinedExceptionCopyWith<$Res> {
-  factory _$$UserDefinedExceptionCopyWith(_$UserDefinedException value,
-          $Res Function(_$UserDefinedException) then) =
-      __$$UserDefinedExceptionCopyWithImpl<$Res>;
-  $Res call({Exception exception});
+abstract class _$$DefinedNetworkErrorCopyWith<$Res> {
+  factory _$$DefinedNetworkErrorCopyWith(_$DefinedNetworkError value,
+          $Res Function(_$DefinedNetworkError) then) =
+      __$$DefinedNetworkErrorCopyWithImpl<$Res>;
+  $Res call({DefinedException exception});
 }
 
 /// @nodoc
-class __$$UserDefinedExceptionCopyWithImpl<$Res>
+class __$$DefinedNetworkErrorCopyWithImpl<$Res>
     extends _$NetworkExceptionCopyWithImpl<$Res>
-    implements _$$UserDefinedExceptionCopyWith<$Res> {
-  __$$UserDefinedExceptionCopyWithImpl(_$UserDefinedException _value,
-      $Res Function(_$UserDefinedException) _then)
-      : super(_value, (v) => _then(v as _$UserDefinedException));
+    implements _$$DefinedNetworkErrorCopyWith<$Res> {
+  __$$DefinedNetworkErrorCopyWithImpl(
+      _$DefinedNetworkError _value, $Res Function(_$DefinedNetworkError) _then)
+      : super(_value, (v) => _then(v as _$DefinedNetworkError));
 
   @override
-  _$UserDefinedException get _value => super._value as _$UserDefinedException;
+  _$DefinedNetworkError get _value => super._value as _$DefinedNetworkError;
 
   @override
   $Res call({
     Object? exception = freezed,
   }) {
-    return _then(_$UserDefinedException(
+    return _then(_$DefinedNetworkError(
       exception == freezed
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
-              as Exception,
+              as DefinedException,
     ));
   }
 }
 
 /// @nodoc
 
-class _$UserDefinedException implements UserDefinedException {
-  _$UserDefinedException(this.exception);
+class _$DefinedNetworkError extends DefinedNetworkError {
+  _$DefinedNetworkError(this.exception) : super._();
 
   @override
-  final Exception exception;
+  final DefinedException exception;
 
   @override
   String toString() {
@@ -1587,7 +1596,7 @@ class _$UserDefinedException implements UserDefinedException {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserDefinedException &&
+            other is _$DefinedNetworkError &&
             const DeepCollectionEquality().equals(other.exception, exception));
   }
 
@@ -1597,8 +1606,8 @@ class _$UserDefinedException implements UserDefinedException {
 
   @JsonKey(ignore: true)
   @override
-  _$$UserDefinedExceptionCopyWith<_$UserDefinedException> get copyWith =>
-      __$$UserDefinedExceptionCopyWithImpl<_$UserDefinedException>(
+  _$$DefinedNetworkErrorCopyWith<_$DefinedNetworkError> get copyWith =>
+      __$$DefinedNetworkErrorCopyWithImpl<_$DefinedNetworkError>(
           this, _$identity);
 
   @override
@@ -1614,7 +1623,7 @@ class _$UserDefinedException implements UserDefinedException {
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
-    required TResult Function(Exception exception) definedException,
+    required TResult Function(DefinedException exception) definedException,
   }) {
     return definedException(exception);
   }
@@ -1631,7 +1640,7 @@ class _$UserDefinedException implements UserDefinedException {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
   }) {
     return definedException?.call(exception);
   }
@@ -1648,7 +1657,7 @@ class _$UserDefinedException implements UserDefinedException {
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
-    TResult Function(Exception exception)? definedException,
+    TResult Function(DefinedException exception)? definedException,
     required TResult orElse(),
   }) {
     if (definedException != null) {
@@ -1669,7 +1678,7 @@ class _$UserDefinedException implements UserDefinedException {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(UnableToProcessData value) unableToProcessData,
     required TResult Function(UnexpectedError value) unexpectedError,
-    required TResult Function(UserDefinedException value) definedException,
+    required TResult Function(DefinedNetworkError value) definedException,
   }) {
     return definedException(this);
   }
@@ -1686,7 +1695,7 @@ class _$UserDefinedException implements UserDefinedException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
   }) {
     return definedException?.call(this);
   }
@@ -1703,7 +1712,7 @@ class _$UserDefinedException implements UserDefinedException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(UnableToProcessData value)? unableToProcessData,
     TResult Function(UnexpectedError value)? unexpectedError,
-    TResult Function(UserDefinedException value)? definedException,
+    TResult Function(DefinedNetworkError value)? definedException,
     required TResult orElse(),
   }) {
     if (definedException != null) {
@@ -1713,12 +1722,13 @@ class _$UserDefinedException implements UserDefinedException {
   }
 }
 
-abstract class UserDefinedException implements NetworkException {
-  factory UserDefinedException(final Exception exception) =
-      _$UserDefinedException;
+abstract class DefinedNetworkError extends NetworkException {
+  factory DefinedNetworkError(final DefinedException exception) =
+      _$DefinedNetworkError;
+  DefinedNetworkError._() : super._();
 
-  Exception get exception;
+  DefinedException get exception;
   @JsonKey(ignore: true)
-  _$$UserDefinedExceptionCopyWith<_$UserDefinedException> get copyWith =>
+  _$$DefinedNetworkErrorCopyWith<_$DefinedNetworkError> get copyWith =>
       throw _privateConstructorUsedError;
 }

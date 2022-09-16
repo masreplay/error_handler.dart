@@ -103,8 +103,8 @@ class __$$IdleCopyWithImpl<T, $Res> extends _$ResultStateCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$Idle<T> implements Idle<T> {
-  const _$Idle();
+class _$Idle<T> extends Idle<T> {
+  const _$Idle() : super._();
 
   @override
   String toString() {
@@ -195,8 +195,9 @@ class _$Idle<T> implements Idle<T> {
   }
 }
 
-abstract class Idle<T> implements ResultState<T> {
+abstract class Idle<T> extends ResultState<T> {
   const factory Idle() = _$Idle<T>;
+  const Idle._() : super._();
 }
 
 /// @nodoc
@@ -220,8 +221,8 @@ class __$$LoadingCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$Loading<T> implements Loading<T> {
-  const _$Loading();
+class _$Loading<T> extends Loading<T> {
+  const _$Loading() : super._();
 
   @override
   String toString() {
@@ -312,8 +313,9 @@ class _$Loading<T> implements Loading<T> {
   }
 }
 
-abstract class Loading<T> implements ResultState<T> {
+abstract class Loading<T> extends ResultState<T> {
   const factory Loading() = _$Loading<T>;
+  const Loading._() : super._();
 }
 
 /// @nodoc
@@ -352,8 +354,8 @@ class __$$DataCopyWithImpl<T, $Res> extends _$ResultStateCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$Data<T> implements Data<T> {
-  const _$Data({required this.data, required this.response});
+class _$Data<T> extends Data<T> {
+  const _$Data({required this.data, required this.response}) : super._();
 
   @override
   final T data;
@@ -460,10 +462,11 @@ class _$Data<T> implements Data<T> {
   }
 }
 
-abstract class Data<T> implements ResultState<T> {
+abstract class Data<T> extends ResultState<T> {
   const factory Data(
       {required final T data,
       required final ResponseValue<dynamic> response}) = _$Data<T>;
+  const Data._() : super._();
 
   T get data;
   ResponseValue<dynamic> get response;
@@ -512,8 +515,8 @@ class __$$ErrorCopyWithImpl<T, $Res> extends _$ResultStateCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$Error<T> implements Error<T> {
-  const _$Error(this.exception);
+class _$Error<T> extends Error<T> {
+  const _$Error(this.exception) : super._();
 
   @override
   final NetworkException exception;
@@ -615,8 +618,9 @@ class _$Error<T> implements Error<T> {
   }
 }
 
-abstract class Error<T> implements ResultState<T> {
+abstract class Error<T> extends ResultState<T> {
   const factory Error(final NetworkException exception) = _$Error<T>;
+  const Error._() : super._();
 
   NetworkException get exception;
   @JsonKey(ignore: true)

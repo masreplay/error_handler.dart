@@ -1,7 +1,9 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
+import 'package:error_handler/src/network_exception/defined_exception.dart';
 import 'package:error_handler/src/network_exception/filter/network_exception_filter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,6 +14,8 @@ part 'network_exception_base.freezed.dart';
 /// [Freezed] based class
 @Freezed(unionKey: "dioException", map: null, copyWith: true)
 class NetworkException with _$NetworkException {
+  const NetworkException._();
+
   const factory NetworkException.connectTimeout() = ConnectTimeout;
 
   const factory NetworkException.sendTimeout() = SendTimeout;
@@ -31,8 +35,8 @@ class NetworkException with _$NetworkException {
 
   const factory NetworkException.unexpectedError() = UnexpectedError;
 
-  factory NetworkException.definedException(Exception exception) =
-      UserDefinedException;
+  factory NetworkException.definedException(DefinedException exception) =
+      DefinedNetworkError;
 
   /// Provide [Freezed.when] exception (connect [Freezed] with errors)
   @internal
@@ -74,5 +78,22 @@ class NetworkException with _$NetworkException {
     } else {
       return const NetworkException.unexpectedError();
     }
+  }
+
+  /// check if [NetworkException] equal to [DefinedException]
+  @internal
+  bool equal(DefinedException exception) {
+    return this == DefinedNetworkError(exception);
+  }
+
+  /// check if [NetworkException] equal to [DefinedException] and then execute [ifEqual]
+  Future<void> equalDo(
+    DefinedException exception, {
+    required DefinedCall ifEqual,
+    DefinedOrElse? orElse,
+  }) async {
+    final value = DefinedNetworkError(exception);
+
+    this == value ? await ifEqual(value) : await orElse?.call();
   }
 }
