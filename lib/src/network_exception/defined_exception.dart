@@ -28,6 +28,11 @@ class DefinedException implements Exception {
     return NetworkException.definedException(this);
   }
 
+  /// return [ResultState] of [DefinedException]
+  ResultState<T> getResultState<T>() {
+    return ResultState<T>.error(get());
+  }
+
   @override
   String toString() => 'DefinedException(errorMessage: $errorMessage)';
 
