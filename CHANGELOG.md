@@ -1,3 +1,6 @@
+## 1.0.5
+- fix: export defined_exception.dart
+
 ## 1.0.4
 
 - mark as stable
