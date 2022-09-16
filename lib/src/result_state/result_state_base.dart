@@ -46,3 +46,5 @@ class ResultState<T> with _$ResultState<T> {
     );
   }
 }
+
+

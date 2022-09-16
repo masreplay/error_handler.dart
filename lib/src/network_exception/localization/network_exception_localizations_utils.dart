@@ -3,6 +3,10 @@ import 'package:error_handler/error_handler.dart';
 typedef ResponseTranslateCallback = String Function(ResponseValue response)?;
 
 extension NetworkErrorExtension on NetworkException {
+  /// translate error
+  ///
+  /// - [translation] provide localization messages
+  /// - [httpErrorStringCallBack] provide specific messages for each http response
   String getLocalizedErrorMessage(
     NetworkErrorLocalizations translation, {
     ResponseTranslateCallback? httpErrorStringCallBack,
@@ -22,6 +26,7 @@ extension NetworkErrorExtension on NetworkException {
         definedException: (error) => translation.unexpectedError,
       );
 
+  /// get default translate messages
   String defaultErrorMessage() => getErrorMessage(this);
 }
 

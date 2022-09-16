@@ -1,64 +1,63 @@
-Welcome to [Perfect Error Handler](https://pub.dev/packages/error_handler), error handler with type-safety/streaming/freezed-functionality/cover-all-dio-exceptions
+Welcome to [ErrorHandler](https://pub.dev/packages/error_handler), error handler with type-safety/streaming/freezed-functionality/cover-all-clients-exceptions
+
+
+## Index
+- [Motivation](#motivation)
+- [Functionality](#functionality)
+- [How to use](#how-to-use)
+  - [install](#install)
+  - [Example](#example)
+    - [```.stream``` provide Loading and Idle State full example](#stream-provide-loading-and-idle-state-full-example)
+    - [Advance login example for post request full example](#advance-login-example-for-post-request-full-example)
+  - [Contribute](#contribute)
+  - [Credits 🙏](#credits-)
 
 # Motivation
-`try{}catch(e){}` are hard to use also `then((){}).catch((){})` make code hard to read and modify
+```try{}catch(e){}``` or ```then((){}).catch((){})``` make code hard to read and modify
 
+# Functionality
+- handle all api possible state init/loading/data/error easily
+- logging the state states
+- built above [freezed](https://github.com/rrousselGit/freezed)
+- **work with any http client like [chopper](https://pub.dev/packages/chopper),[dio](https://pub.dev/packages/chopper) and more **
 
-
-- handle all state init/loading/data/error easily
-- stream state changes 
-- logger for states
-- built above freezed
-- function tear-off if possible
-- **work with any client**
-- built on Dio so it covers all types of exceptions also you can add your own!
-- [chopper](https://pub.dev/packages/chopper) support
-
-Same as mentioned in [Freezed](https://pub.dev/packages/freezed)
-Implementing all of this can take hundreds of lines
-and it's hard to make a specific error handler in each project
-
-**Perfect Error Handler** is implemented so all you have to do is start sending requests!
-
-| Before                          | After                          |
+<!-- | Before                          | After                          |
 | ------------------------------- | ------------------------------ |
-| ![before](readme/before.png) | ![after](readme/after.png) |
+| ![before](readme/before.png) | ![after](readme/after.png) | -->
 
 
-## How to use
-Install
+# How to use
+## install
 
 For a Flutter project:
-```cmd
+
+```shell
 flutter pub add error_handler
 flutter pub add dio
 ```
 
 For a Dart project:
-```cmd
+
+```shell
 flutter pub add error_handler
 flutter pub add dio
 ```
 
-
 ## Example
-**[read fill example here](example/error_handler_example.dart)**
-
+- ```.future``` get api result directly [full example](example/error_handler.dart)
 ```dart
 import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
 
-/// first create [Dio] api call
 FutureResponse<Post> getPost() async {
   const path = "https://jsonplaceholder.typicode.com/posts/1";
-
   final response = await Dio().get(path);
   return response.convert(Post.fromJson);
 }
 
 /// wrap the api call with [ErrorHandler.future]
 Future<void> main() async {
-  final state = await errorHandler.future(getPost);
+  final state = await ErrorHandler().future(getPost);
 
   state.whenOrNull(
     data: (post, response) {
@@ -70,31 +69,71 @@ Future<void> main() async {
   );
 }
 ```
+  - ```errorHandler.future((){...})``` return safe data
 
-**how t**
+
+### ```.stream``` provide Loading and Idle State [full example](example/error_handler_stream.dart)
 ```dart
+/// wrap the api call with [ErrorHandler.stream]
+///
+/// to handle loading state
+void main() {
+  final event = errorHandler.stream(getPost);
 
-safeApiCall(() {
-  return getPost();
-}).listen((event) {
-    event.whenOrNull(
-      data: (post, statusCode) {
-        print(post.title);
+  event.listen((state) {
+    state.whenOrNull(
+      
+      loading: () {
+        print("loading");
+      },
+      data: (post, response) {
+        print("title: ${post.title}");
+      },
+      error: (error) {
+        print(getErrorMessage(error));
       },
     );
   });
+}
 ```
+- ```errorHandler.stream((){...})``` first return loading and then return data or error
 
-other example
+### Advance login example for post request [full example](example/login_example.dart)
 ```dart
-StreamState<Post> getPostRepository(String id) =>
-    safeApiCall(() => getPost(id));
+/// First create API call
+FutureResponse<User> login(String gmail, String password) async {
+  final body = {"gmail": gmail, "password": password};
+
+  final response = await Dio().post("http://your.domain.com/login", data: body);
+
+  return response.convert(User.fromJson);
+}
+
+/// Wrap it with [ErrorHandler.stream] or [ErrorHandler.future]
+StreamState<User> safeLogin(String gmail, String password) =>
+    errorHandler.stream(() => login(gmail, password));
+
+void main() {
+  final event = safeLogin("example@domain.com", "password");
+  event.listen((event) {
+    event.whenOrNull(
+      loading: () {
+        print("please wait");
+      },
+      data: (data, response) {
+        print("login successfully");
+        print(data);
+      },
+      error: (exception) {
+        print(exception.defaultErrorMessage());
+      },
+    );
+  });
+}
 ```
 
-## ResultState can use other typedef like
-```
-ApiResponse, UiState
-```
+## Contribute
+please fork the repo and be part of maintainers team ❤️‍🔥
 
 ## Credits 🙏
 [Freezed](https://github.com/rrousselGit/freezed)
