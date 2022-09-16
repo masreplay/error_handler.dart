@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/src/network_exception/defined_exception.dart';
 import 'package:error_handler/src/network_exception/filter/network_exception_filter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

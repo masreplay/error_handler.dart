@@ -1,5 +1,4 @@
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/src/network_exception/defined_exception.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'result_state_base.freezed.dart';
@@ -36,7 +35,7 @@ class ResultState<T> with _$ResultState<T> {
     DefinedOrElse? orElse,
   }) {
     print("1 ${this}");
-    
+
     whenOrNull(
       error: (exception) {
         print("2 $exception");
@@ -46,5 +45,3 @@ class ResultState<T> with _$ResultState<T> {
     );
   }
 }
-
-

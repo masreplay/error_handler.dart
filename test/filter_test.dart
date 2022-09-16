@@ -1,5 +1,4 @@
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/src/network_exception/defined_exception.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
