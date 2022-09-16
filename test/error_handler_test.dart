@@ -6,6 +6,7 @@ import 'client/post.dart';
 
 /// wrap the api call with [safeApiCall]
 void main() {
+  // TODO(masreplay): test filter
   group("ErrorHandler.stream", () {
     test("ResultState.data", () {
       errorHandler.stream(getPost).listen((event) {

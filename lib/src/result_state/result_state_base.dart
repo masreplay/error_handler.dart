@@ -30,13 +30,17 @@ class ResultState<T> with _$ResultState<T> {
   const factory ResultState.error(NetworkException exception) = Error<T>;
 
   /// handle only [DefinedNetworkError] for [DefinedException] in [ResultState.error]
-  void whenDefinedException(
-    DefinedException type, {
+  void whenDefinedException<Exception extends DefinedException>(
+    Exception type, {
     required DefinedCall ifEqual,
     DefinedOrElse? orElse,
   }) {
+    print("1 ${this}");
+    
     whenOrNull(
       error: (exception) {
+        print("2 $exception");
+
         exception.equalDo(type, ifEqual: ifEqual, orElse: orElse);
       },
     );

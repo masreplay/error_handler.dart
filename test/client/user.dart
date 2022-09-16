@@ -1,17 +1,44 @@
 import 'package:error_handler/error_handler.dart';
 
 import 'test_client.dart';
-import 'post.dart';
 
 class User {
   final String name;
+  final String role;
+  User({
+    required this.name,
+    required this.role,
+  });
 
-  const User(this.name);
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'role': role,
+    };
+  }
 
-  factory User.fromJson(Map<String, dynamic> json) => User(json["name"]);
+  factory User.fromJson(Map<String, dynamic> map) {
+    return User(
+      name: map['name'] as String,
+      role: map['role'] as String,
+    );
+  }
 }
 
-FutureResponse<Post> login({
+FutureResponse<User> login({
+  required String username,
+  required String password,
+}) async {
+  final user = User(name: "Mas", role: "AGENT");
+  dioAdapter.onGet(
+    path,
+    (server) => server.reply(200, user.toJson(), delay: delay),
+  );
+  final response = await dio.get(path);
+  return response.convert(User.fromJson);
+}
+
+FutureResponse<User> loginError({
   required String username,
   required String password,
 }) async {
@@ -20,13 +47,5 @@ FutureResponse<Post> login({
     (server) => server.reply(400, {"error": "USER_TYPE_ERROR"}, delay: delay),
   );
   final response = await dio.get(path);
-  return response.convert(Post.fromJson);
-}
-
-enum NetworkErrors {
-  userTypeError("USER_TYPE_ERROR");
-
-  const NetworkErrors(this.message);
-
-  final String message;
+  return response.convert(User.fromJson);
 }

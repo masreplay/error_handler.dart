@@ -7,10 +7,14 @@ import 'client/user.dart';
 class RoleException extends DefinedException {}
 
 // user don't have the action to perform such action
-class UserTypeNEFilter extends NetworkExceptionFilter {
+class RoleExceptionFilter extends NetworkExceptionFilter {
   @override
   NetworkException whenResponseException(ResponseValue response) {
-    if (response.data["role"] == "Agent") return RoleException().get();
+    if (response.statusCode == 400 &&
+        response.data["error"] == "USER_TYPE_ERROR") {
+      return RoleException().get();
+    }
+
     return super.whenResponseException(response);
   }
 }
@@ -18,13 +22,10 @@ class UserTypeNEFilter extends NetworkExceptionFilter {
 void main() {
   group("filter", () {
     test("NetworkException.definedException", () async {
-      final username = "Mas";
-      final password = "password";
+      final handler = ErrorHandler(filter: RoleExceptionFilter());
 
-      final errorHandler = ErrorHandler(filter: UserTypeNEFilter());
-
-      final state = await errorHandler.future(
-        () => login(username: username, password: password),
+      final state = await handler.future(
+        () => loginError(username: "@masreplay", password: "password"),
       );
 
       state.whenDefinedException(RoleException(), ifEqual: (exception) {

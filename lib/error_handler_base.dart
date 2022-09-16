@@ -1,9 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:error_handler/error_handler.dart';
 import 'package:error_handler/src/network_exception/filter/network_exception_filter.dart';
 import 'package:error_handler/src/network_exception/network_exception_extension.dart';
 
 // singleton instance of errorHandler
-final errorHandler = ErrorHandler();
+final errorHandler = ErrorHandler(logger: stateLogger);
 
 // TODO(masreplay): docs
 class ErrorHandler<T> {
@@ -88,5 +89,15 @@ class ErrorHandler<T> {
 
       return errorResult;
     }
+  }
+
+  ErrorHandler<T> copyWith({
+    LoggingCallback? logger,
+    NetworkExceptionFilter? filter,
+  }) {
+    return ErrorHandler<T>(
+      logger: logger ?? this.logger,
+      filter: filter ?? this.filter,
+    );
   }
 }

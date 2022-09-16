@@ -1,34 +1,58 @@
+import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
 import 'package:error_handler/src/network_exception/defined_exception.dart';
+import 'package:test/scaffolding.dart';
 
-import 'error_handler_example.dart';
+class User {
+  final String name;
+  final String role;
 
-class UserTypeException extends DefinedException {}
+  User({
+    required this.name,
+    required this.role,
+  });
 
-class UserTypeNetworkExceptionFilter extends NetworkExceptionFilter {
+  factory User.fromJson(Map<String, dynamic> map) {
+    return User(
+      name: map['name'] as String,
+      role: map['role'] as String,
+    );
+  }
+}
+
+FutureResponse<User> login(String username, String password) async {
+  final response = await Dio().get("https://theKeySoftware.com/login");
+  return response.convert(User.fromJson);
+}
+
+/// user don't have the action to perform such action
+class RoleException extends DefinedException {}
+
+/// provide [RoleException]
+class RoleExceptionFilter extends NetworkExceptionFilter {
   @override
   NetworkException whenResponseException(ResponseValue response) {
-    if (response.data["userType"] == "Agent") {
-      return NetworkException.definedException(UserTypeException());
+    if (response.statusCode == 400 &&
+        response.data["error"] == "USER_TYPE_ERROR") {
+      return RoleException().get();
     }
 
     return super.whenResponseException(response);
   }
 }
 
-Future<void> main() async {
-  final errorHandler = ErrorHandler();
-  final state = await errorHandler.future(getPost);
+void main() {
+  group("filter", () {
+    test("NetworkException.definedException", () async {
+      final handler = ErrorHandler(filter: RoleExceptionFilter());
 
-  state.whenOrNull(
-    error: (error) {
-      error.whenOrNull(
-        definedException: (Exception exception) {
-          if (exception is UserTypeException) {
-            print("Hello");
-          }
-        },
+      final state = await handler.future(
+        () => login("@masreplay", "password"),
       );
-    },
-  );
+
+      state.whenDefinedException(RoleException(), ifEqual: (exception) {
+        print("Hello there $exception");
+      });
+    });
+  });
 }

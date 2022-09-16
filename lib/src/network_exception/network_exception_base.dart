@@ -12,7 +12,7 @@ part 'network_exception_base.freezed.dart';
 /// used to union all possible [Exception] came from [Dio] request
 ///
 /// [Freezed] based class
-@Freezed(unionKey: "dioException", map: null, copyWith: true)
+@Freezed(unionKey: "dioException", map: null, copyWith: true, equal: true)
 class NetworkException with _$NetworkException {
   const NetworkException._();
 
@@ -93,6 +93,13 @@ class NetworkException with _$NetworkException {
     DefinedOrElse? orElse,
   }) async {
     final value = DefinedNetworkError(exception);
+
+    print("3 ${value.exception}");
+    final current = this;
+    if (current is DefinedNetworkError) {
+      print("4 ${current.exception}");
+      print("5 ${current == value}");
+    }
 
     this == value ? await ifEqual(value) : await orElse?.call();
   }
