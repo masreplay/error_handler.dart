@@ -1,17 +1,12 @@
-## 1.0.5-dev
-- change userDefinedException to definedException every where
-- 
-## 1.0.4-dev
-
-- add base class ErrorHandler
-- support both stream returning and future too
-- 
-- full support to [chopper](https://pub.dev/packages/chopper) client
 ## 1.0.3-dev
 
-- add [chopper](https://pub.dev/packages/chopper) support
 - breaking changes
-- 
+- add docs and examples
+- change ```UserDefinedException``` to ```DefinedException``` every where 
+- add base class ```ErrorHandler```
+- support both ```.stream``` returning and ```.future``` too
+- full support to [chopper](https://pub.dev/packages/chopper) client
+
 ## 1.0.2-dev
 
 - fix version
