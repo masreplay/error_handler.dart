@@ -4,6 +4,8 @@ import 'package:test/scaffolding.dart';
 
 import 'client/user.dart';
 
+// TODO(masreplay): fix identical problem
+
 final agentRoleException = DefinedException(tag: "AgentRole");
 final blockedUserException = DefinedException(tag: "BlockedUser");
 
@@ -11,7 +13,7 @@ final blockedUserException = DefinedException(tag: "BlockedUser");
 class UserRoleDataFilter implements DataFilter<User> {
   @override
   ResultState<User>? handle(User user, ResponseValue response) {
-    if (user.role == Role.agent) return agentRoleException.getResultState();
+    if (user.role == Role.agent) return agentRoleException.toResultState();
 
     return null;
   }
@@ -24,7 +26,7 @@ class BlockedUserDataFilter implements DataFilter<User> {
 
     for (var username in usernames) {
       if (user.name == username) {
-        return blockedUserException.getResultState();
+        return blockedUserException.toResultState();
       }
     }
 
@@ -73,11 +75,13 @@ void main() {
     });
     test(".handle multiple", () async {
       final state = await ErrorHandler().future(
-        () => login(
-          username: "@masreplay",
-          password: "password",
-          returnUserRole: Role.agent,
-        ),
+        () {
+          return login(
+            username: "@masreplay",
+            password: "password",
+            returnUserRole: Role.agent,
+          );
+        },
         dataFilters: [UserRoleDataFilter(), BlockedUserDataFilter()],
       );
 

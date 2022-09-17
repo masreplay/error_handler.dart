@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:error_handler/error_handler.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 typedef DefinedCall = FutureOr<void> Function(DefinedNetworkError error);
 typedef DefinedOrElse = FutureOr<void> Function();
@@ -13,6 +14,7 @@ typedef DefinedOrElse = FutureOr<void> Function();
 /// ```
 /// - [tag] shouldn't be the same fir two type
 class DefinedException implements Exception {
+  @protected
   final String tag;
 
   const DefinedException({required this.tag});
@@ -30,7 +32,7 @@ class DefinedException implements Exception {
   }
 
   /// return [ResultState] of [DefinedException]
-  ResultState<T> getResultState<T>() {
+  ResultState<T> toResultState<T>() {
     return ResultState<T>.error(get());
   }
 
