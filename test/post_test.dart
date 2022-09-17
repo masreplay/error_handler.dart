@@ -11,9 +11,12 @@ void main() {
 "title": "title",
 "body": "body"
 }""";
-  test('Post fromJson', () async {
-    final post = Post.fromJson(jsonDecode(postData));
 
-    expect(post.title, "title");
+  test('Post fromJson', () async {
+    final map = jsonDecode(postData);
+
+    final post = Post.fromJson(map);
+
+    expect(post.title, equals("title"));
   });
 }

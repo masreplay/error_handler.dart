@@ -55,7 +55,7 @@ void main() {
       });
     });
 
-    test(".handle same", () async {
+    test(".handle user same type", () async {
       final state = await errorHandler.future(
         () => login(
           username: "@masreplay",
@@ -67,13 +67,10 @@ void main() {
 
       expect(state.isData, equals(true));
 
-      state.whenOrNull(
-        data: (User user, response) {
-          print(user.toString());
-        },
-      );
+      state.whenOrNull(data: (User user, response) {});
     });
-    test(".handle multiple", () async {
+
+    test(".handle multiple filters", () async {
       final state = await ErrorHandler().future(
         () {
           return login(
