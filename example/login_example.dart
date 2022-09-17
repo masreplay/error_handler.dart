@@ -17,7 +17,7 @@ class User {
 FutureResponse<User> login(String gmail, String password) async {
   final body = {"gmail": gmail, "password": password};
 
-  final response = await Dio ().post(
+  final response = await Dio().post(
     "http://your.domain.com/login",
     data: body,
   );

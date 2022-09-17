@@ -1,3 +1,7 @@
+## 1.0.6
+
+- fix: chopper .transform not work correctly
+
 ## 1.0.5
 
 - fix: export defined_exception.dart

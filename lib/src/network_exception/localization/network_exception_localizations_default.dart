@@ -2,7 +2,7 @@ import 'package:error_handler/src/network_exception/localization/network_excepti
 
 class NetworkErrorLocalizationsDefault implements NetworkErrorLocalizations {
   const NetworkErrorLocalizationsDefault();
-  
+
   @override
   String get responseException => "response error";
 
