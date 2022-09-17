@@ -1,5 +1,5 @@
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/src/network_exception/filter/network_exception_filter.dart';
+import 'package:error_handler/src/filters/network_exception_filter.dart';
 
 /// simple use of [ErrorHandler.stream]
 StreamState<T> safeApiCall<T>(

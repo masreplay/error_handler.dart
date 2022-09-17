@@ -12,7 +12,7 @@ FutureResponse<Post> getPost() async {
 
 /// wrap the api call with [ErrorHandler.future]
 Future<void> main() async {
-  final state = await errorHandler.future(getPost);
+  final state = await ErrorHandler().future(getPost);
 
   state.whenOrNull(
     data: (post, response) {

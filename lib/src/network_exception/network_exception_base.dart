@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/src/network_exception/filter/network_exception_filter.dart';
+import 'package:error_handler/src/filters/network_exception_filter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'network_exception_base.freezed.dart';
@@ -92,13 +92,6 @@ class NetworkException with _$NetworkException {
     DefinedOrElse? orElse,
   }) async {
     final value = DefinedNetworkError(exception);
-
-    print("3 ${value.exception}");
-    final current = this;
-    if (current is DefinedNetworkError) {
-      print("4 ${current.exception}");
-      print("5 ${current == value}");
-    }
 
     this == value ? await ifEqual(value) : await orElse?.call();
   }

@@ -24,7 +24,9 @@ FutureResponse<User> login(String username, String password) async {
 }
 
 /// user don't have the action to perform such action
-class RoleException extends DefinedException {}
+class RoleException extends DefinedException {
+  const RoleException() : super(tag: "Role");
+}
 
 /// provide [RoleException]
 class RoleExceptionFilter extends NetworkExceptionFilter {

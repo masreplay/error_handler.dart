@@ -11,10 +11,11 @@ typedef DefinedOrElse = FutureOr<void> Function();
 /// ```dart
 /// class RoleException extends DefinedException {}
 /// ```
-abstract class DefinedException implements Exception {
-  final String? errorMessage;
+/// - [tag] shouldn't be the same fir two type
+class DefinedException implements Exception {
+  final String tag;
 
-  const DefinedException([this.errorMessage]);
+  const DefinedException({required this.tag});
 
   /// pointCut used to get [NetworkException] representation
   ///
@@ -34,15 +35,12 @@ abstract class DefinedException implements Exception {
   }
 
   @override
-  String toString() => 'DefinedException(errorMessage: $errorMessage)';
-
-  @override
   bool operator ==(covariant DefinedException other) {
     if (identical(this, other)) return true;
 
-    return other.errorMessage == errorMessage;
+    return other.tag == tag;
   }
 
   @override
-  int get hashCode => errorMessage.hashCode;
+  int get hashCode => tag.hashCode;
 }

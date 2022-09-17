@@ -11,7 +11,8 @@ void stateLogger<T>(
   Object? error,
   StackTrace? trace,
 ) {
-  print("resultState: $resultState");
+  // TODO(masreplay): use log function
+  print("ResultState: $resultState");
   if (error != null || trace != null) {
     print(error);
     print(trace);

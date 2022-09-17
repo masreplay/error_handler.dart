@@ -34,14 +34,17 @@ class ResultState<T> with _$ResultState<T> {
     required DefinedCall ifEqual,
     DefinedOrElse? orElse,
   }) {
-    print("1 ${this}");
-
     whenOrNull(
       error: (exception) {
-        print("2 $exception");
-
         exception.equalDo(type, ifEqual: ifEqual, orElse: orElse);
       },
     );
   }
 }
+
+typedef WhenDefinedException = void
+    Function<Exception extends DefinedException>(
+  Exception type, {
+  required DefinedCall ifEqual,
+  DefinedOrElse? orElse,
+});

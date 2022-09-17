@@ -1,13 +1,41 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:error_handler/data_filter.dart';
 import 'package:error_handler/error_handler.dart';
-import 'package:error_handler/src/network_exception/filter/network_exception_filter.dart';
+import 'package:error_handler/src/filters/network_exception_filter.dart';
 import 'package:error_handler/src/network_exception/network_exception_extension.dart';
 
 // singleton instance of errorHandler
 final errorHandler = ErrorHandler(logger: stateLogger);
 
-// TODO(masreplay): docs
+/// error handler for all type of clients in dart
+///
+/// used directly with any request method get, post, delete, ...
+/// and with any return type it's type-safe
+///
+/// ## Example:
+///
+/// ```dart
+/// FutureResponse<Post> getPost() async {
+///   const path = "https://jsonplaceholder.typicode.com/posts/1";
+///
+///   final response = await Dio().get(path);
+///   return response.convert(Post.fromJson);
+/// }
+///
+/// Future<void> main() async {
+///   final state = await ErrorHandler().future(getPost);
+///
+///   state.whenOrNull(
+///     data: (post, response) {
+///       print("title: ${post.title}");
+///     },
+///     error: (error) {
+///       print(getErrorMessage(error));
+///     },
+///   );
+/// }
+/// ```
+/// - [future] return state directly [Error] or [Data]
+/// - [stream] return state when it get changed
+///
 class ErrorHandler<T> {
   /// if null use [stateLogger]
   // TODO(masreplay): replace with list of loggers
@@ -22,14 +50,55 @@ class ErrorHandler<T> {
     this.filter = const NetworkExceptionFilterDefault(),
   });
 
-  /// return [apiCall] states when it gets changed
-  /// first return the [firstState]
+  ResultState<State> _handleDataState<State>({
+    required HttpResponse<State, dynamic> value,
+    required DataFilters<State> filters,
+  }) {
+    final dataResult = ResultState<State>.data(
+      data: value.data,
+      response: value.response,
+    );
+
+    logger?.call(dataResult, null, null);
+
+    for (var filter in filters) {
+      final state = filter.handle(value.data, value.response);
+
+      if (state == null) return dataResult;
+
+      print("ResultState: old: $dataResult, new: $state");
+      return state;
+    }
+
+    return dataResult;
+  }
+
+  ResultState<State> _handleError<State>(e, trace) {
+    final networkException = NetworkException.getNetworkException(
+      e,
+      filter: filter,
+    );
+
+    final errorResult = networkException.asError<State>();
+
+    logger?.call(errorResult, e, trace);
+
+    return errorResult;
+  }
+
+  /// return state when it get changed
+  ///
+  /// start with [firstState] it's [Loading] by default
+  /// then return either [Data] or [Error]
+  ///
+  ///
+  /// - [apiCall] API call of any client with any Http method type
+  /// - [firstState] first state get yield in the [Stream] it's [Loading] by default
+  /// - [dataFilters] change [Data] type to [Error] or new [Data] type
   StreamState<State> stream<State>(
     ApiCall<State> apiCall, {
-
-    /// first value get yield it's [Loading] by default
-    /// and it should be either [Loading] or [Idle]
     ResultState<State> /* Loading | Idle */ firstState = const Loading(),
+    DataFilters<State> dataFilters = const [],
   }) async* {
     assert(
       firstState is Loading || firstState is Idle,
@@ -42,62 +111,26 @@ class ErrorHandler<T> {
     try {
       final value = await apiCall();
 
-      final dataResult = ResultState<State>.data(
-        data: value.data,
-        response: value.response,
-      );
-
-      logger?.call(dataResult, null, null);
-
-      yield dataResult;
+      yield _handleDataState<State>(value: value, filters: dataFilters);
     } catch (e, trace) {
-      final networkException = NetworkException.getNetworkException(
-        e,
-        filter: filter,
-      );
-
-      final errorResult = networkException.asError<State>();
-
-      logger?.call(errorResult, e, trace);
-
-      yield errorResult;
+      yield _handleError(e, trace);
     }
   }
 
+  /// return value directly [Error] or [Data]
+  ///
+  /// - [apiCall] API call of any client with any Http method type
+  /// - [dataFilters] change [Data] type to [Error] or new [Data] type
   FutureOrState<State> future<State>(
     FutureResponse<State> Function() apiCall, {
-    List<DataFilter<State>> dataFilters = const [],
+    DataFilters<State> dataFilters = const [],
   }) async {
     try {
       final value = await apiCall();
 
-      final data = value.data;
-      final response = value.response;
-
-      final dataResult = ResultState<State>.data(
-        data: data,
-        response: response,
-      );
-
-      logger?.call(dataResult, null, null);
-
-      /// change return type from [Data] to [Error]
-      for (var filter in dataFilters) {
-        return filter.handle(data, response) ?? dataResult;
-      }
-
-      return dataResult;
+      return _handleDataState<State>(value: value, filters: dataFilters);
     } catch (e, trace) {
-      final networkException = NetworkException.getNetworkException(
-        e,
-        filter: filter,
-      );
-
-      final errorResult = networkException.asError<State>();
-
-      logger?.call(errorResult, e, trace);
-
-      return errorResult;
+      return _handleError(e, trace);
     }
   }
 

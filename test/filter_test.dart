@@ -4,7 +4,9 @@ import 'package:test/scaffolding.dart';
 
 import 'client/user.dart';
 
-class RoleException extends DefinedException {}
+class _RoleException extends DefinedException {
+  const _RoleException() : super(tag: "Role");
+}
 
 // user don't have the action to perform such action
 class RoleExceptionFilter extends NetworkExceptionFilter {
@@ -12,7 +14,7 @@ class RoleExceptionFilter extends NetworkExceptionFilter {
   NetworkException whenResponseException(ResponseValue response) {
     if (response.statusCode == 400 &&
         response.data["error"] == "USER_TYPE_ERROR") {
-      return RoleException().get();
+      return _RoleException().get();
     }
 
     return super.whenResponseException(response);
@@ -28,8 +30,8 @@ void main() {
         () => loginError(username: "@masreplay", password: "password"),
       );
 
-      state.whenDefinedException(RoleException(), ifEqual: (error) {
-        expect(error.exception, equals(RoleException()));
+      state.whenDefinedException(_RoleException(), ifEqual: (error) {
+        expect(error.exception, equals(_RoleException()));
       });
     });
   });

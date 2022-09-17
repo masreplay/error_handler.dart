@@ -1,8 +1,9 @@
 import 'package:error_handler/error_handler.dart';
 
-/// convert [Data] to [Error] or other type of [Data]
-///
-///
+/// [List] of [DataFilter] used in [ErrorHandler.future] and [ErrorHandler.stream]
+typedef DataFilters<T> = List<DataFilter<T>>;
+
+/// convert [Data] to [Error]
 ///
 /// ## Example:
 ///
@@ -25,8 +26,7 @@ import 'package:error_handler/error_handler.dart';
 /// See also:
 ///
 /// - [NetworkExceptionFilter] change error type and provide new errors type
-
 abstract class DataFilter<T> {
   /// return null if you don't want [Data] to be changed
-  ResultState<T>? handle(T data, ResponseValue<dynamic> response);
+  ResultState<T>? handle(T data, ResponseValue response);
 }
