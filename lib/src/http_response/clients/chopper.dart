@@ -4,11 +4,11 @@ import 'package:error_handler/error_handler.dart';
 /// [Response] convertor
 typedef ChopperResponse<R> = ResponseConverter<R, Map<String, dynamic>>;
 
-typedef ChopperHttpResponse<RT> = HttpResponse<RT, Response<RT>>;
+typedef ChopperHttpResponse<T> = HttpResponse<T, Response<T>>;
 
 typedef FutureChopperResponse<RT> = Future<Response<RT>>;
 
-extension HttpResponseChopperExtension<RT> on Response<RT> {
+extension HttpResponseChopperExtension<T> on Response<T> {
   /// convert chopper [Response] to [HttpResponse]
   ///
   /// - [convert] change data type to [T]
@@ -18,23 +18,27 @@ extension HttpResponseChopperExtension<RT> on Response<RT> {
   ///
   /// response.convert((map) => User.fromJson(map));
   /// ```
-  ChopperHttpResponse convert<T>(ChopperResponse<T> convert) {
+  ChopperHttpResponse convert(ChopperResponse<T> convert) {
     return ChopperHttpResponse(
-      convert(body as dynamic),
-      ResponseValue(body as dynamic, statusCode),
+      convert(this.body as dynamic),
+      ResponseValue(this.body as dynamic, statusCode),
     );
   }
 
   /// wrap [Response] without convertor and return [HttpResponse]
-  ChopperHttpResponse<RT> transform() {
-    return ChopperHttpResponse<RT>(
-      body as RT,
+  ChopperHttpResponse<T> transform() {
+    return ChopperHttpResponse<T>(
+      this.body as T,
       ResponseValue(this, statusCode),
     );
   }
 }
 
-extension HttpResponseChopperExtensionFuture<RT> on FutureChopperResponse<RT> {
+extension HttpResponseChopperExtensionFuture<T> on Future<Response<T>> {
   /// wrap [Future] of type [Response] without convertor and return [HttpResponse]
-  Future<ChopperHttpResponse<RT>> transform() async => (await this).transform();
+  Future<ChopperHttpResponse<T>> transform() async {
+    final value = await this;
+
+    return value.transform();
+  }
 }

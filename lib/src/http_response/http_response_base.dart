@@ -4,7 +4,7 @@ import 'package:error_handler/error_handler.dart';
 /// future value of [HttpResponse]
 typedef FutureResponse<T> = Future<HttpResponse<T, dynamic>>;
 
-/// response wrapper 
+/// response wrapper
 ///
 /// [response] will be passed to [ErrorHandler]
 ///
@@ -38,6 +38,7 @@ class HttpResponse<T, RT> {
 class ResponseValue<RT> {
   final RT? data;
   final int? statusCode;
+
   const ResponseValue(this.data, this.statusCode);
 
   @override
