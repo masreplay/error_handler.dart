@@ -27,22 +27,23 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 // ignore: deprecated_member_use_from_same_package
 typedef NetworkExceptionFilter = NetworkExceptionDelegate;
 
+typedef ObjectError = Object?;
+
 /// Replace [NetworkException] Default error type
 // TODO(masreplay): add example here
-
 @Deprecated("renamed to NetworkExceptionFilter")
 abstract class NetworkExceptionDelegate {
   const NetworkExceptionDelegate();
 
-  NetworkException whenConnectTimeout() {
+  NetworkException whenConnectTimeout([ObjectError error]) {
     return const NetworkException.connectTimeout();
   }
 
-  NetworkException whenSendTimeout() {
+  NetworkException whenSendTimeout([ObjectError error]) {
     return const NetworkException.sendTimeout();
   }
 
-  NetworkException whenReceiveTimeout() {
+  NetworkException whenReceiveTimeout([ObjectError error]) {
     return const NetworkException.receiveTimeout();
   }
 
@@ -50,23 +51,23 @@ abstract class NetworkExceptionDelegate {
     return NetworkException.responseException(response);
   }
 
-  NetworkException whenRequestCancelled() {
+  NetworkException whenRequestCancelled([ObjectError error]) {
     return const NetworkException.requestCancelled();
   }
 
-  NetworkException whenOtherException() {
-    return const NetworkException.otherException();
+  NetworkException whenOtherException([ObjectError error]) {
+    return NetworkException.otherException(error);
   }
 
-  NetworkException whenNoInternetConnection() {
+  NetworkException whenNoInternetConnection([ObjectError error]) {
     return const NetworkException.noInternetConnection();
   }
 
-  NetworkException whenUnableToProcessData() {
+  NetworkException whenUnableToProcessData([ObjectError error]) {
     return const NetworkException.unableToProcessData();
   }
 
-  NetworkException whenUnexpectedError() {
+  NetworkException whenUnexpectedError([ObjectError error]) {
     return const NetworkException.unexpectedError();
   }
 }

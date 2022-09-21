@@ -26,7 +26,7 @@ class NetworkException with _$NetworkException {
 
   const factory NetworkException.requestCancelled() = RequestCancelled;
 
-  const factory NetworkException.otherException() = OtherException;
+  const factory NetworkException.otherException([ObjectError error]) = OtherException;
 
   const factory NetworkException.noInternetConnection() = NoInternetConnection;
 
@@ -61,7 +61,7 @@ class NetworkException with _$NetworkException {
                 ResponseValue(response.data, response.statusCode),
               );
             case DioErrorType.other:
-              return filter.whenOtherException();
+              return filter.whenOtherException(error);
           }
         } else if (error is SocketException) {
           return const NetworkException.noInternetConnection();

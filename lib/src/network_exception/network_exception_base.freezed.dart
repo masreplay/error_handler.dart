@@ -24,7 +24,7 @@ mixin _$NetworkException {
     required TResult Function(ResponseValue<dynamic> response)
         responseException,
     required TResult Function() requestCancelled,
-    required TResult Function() otherException,
+    required TResult Function(Object? error) otherException,
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
@@ -38,7 +38,7 @@ mixin _$NetworkException {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -52,7 +52,7 @@ mixin _$NetworkException {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -169,7 +169,7 @@ class _$ConnectTimeout extends ConnectTimeout {
     required TResult Function(ResponseValue<dynamic> response)
         responseException,
     required TResult Function() requestCancelled,
-    required TResult Function() otherException,
+    required TResult Function(Object? error) otherException,
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
@@ -186,7 +186,7 @@ class _$ConnectTimeout extends ConnectTimeout {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -203,7 +203,7 @@ class _$ConnectTimeout extends ConnectTimeout {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -324,7 +324,7 @@ class _$SendTimeout extends SendTimeout {
     required TResult Function(ResponseValue<dynamic> response)
         responseException,
     required TResult Function() requestCancelled,
-    required TResult Function() otherException,
+    required TResult Function(Object? error) otherException,
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
@@ -341,7 +341,7 @@ class _$SendTimeout extends SendTimeout {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -358,7 +358,7 @@ class _$SendTimeout extends SendTimeout {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -479,7 +479,7 @@ class _$ReceiveTimeout extends ReceiveTimeout {
     required TResult Function(ResponseValue<dynamic> response)
         responseException,
     required TResult Function() requestCancelled,
-    required TResult Function() otherException,
+    required TResult Function(Object? error) otherException,
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
@@ -496,7 +496,7 @@ class _$ReceiveTimeout extends ReceiveTimeout {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -513,7 +513,7 @@ class _$ReceiveTimeout extends ReceiveTimeout {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -658,7 +658,7 @@ class _$ResponseException extends ResponseException {
     required TResult Function(ResponseValue<dynamic> response)
         responseException,
     required TResult Function() requestCancelled,
-    required TResult Function() otherException,
+    required TResult Function(Object? error) otherException,
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
@@ -675,7 +675,7 @@ class _$ResponseException extends ResponseException {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -692,7 +692,7 @@ class _$ResponseException extends ResponseException {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -819,7 +819,7 @@ class _$RequestCancelled extends RequestCancelled {
     required TResult Function(ResponseValue<dynamic> response)
         responseException,
     required TResult Function() requestCancelled,
-    required TResult Function() otherException,
+    required TResult Function(Object? error) otherException,
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
@@ -836,7 +836,7 @@ class _$RequestCancelled extends RequestCancelled {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -853,7 +853,7 @@ class _$RequestCancelled extends RequestCancelled {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -932,6 +932,7 @@ abstract class _$$OtherExceptionCopyWith<$Res> {
   factory _$$OtherExceptionCopyWith(
           _$OtherException value, $Res Function(_$OtherException) then) =
       __$$OtherExceptionCopyWithImpl<$Res>;
+  $Res call({Object? error});
 }
 
 /// @nodoc
@@ -944,26 +945,46 @@ class __$$OtherExceptionCopyWithImpl<$Res>
 
   @override
   _$OtherException get _value => super._value as _$OtherException;
+
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(_$OtherException(
+      error == freezed ? _value.error : error,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$OtherException extends OtherException {
-  const _$OtherException() : super._();
+  const _$OtherException([this.error]) : super._();
+
+  @override
+  final Object? error;
 
   @override
   String toString() {
-    return 'NetworkException.otherException()';
+    return 'NetworkException.otherException(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OtherException);
+        (other.runtimeType == runtimeType &&
+            other is _$OtherException &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$OtherExceptionCopyWith<_$OtherException> get copyWith =>
+      __$$OtherExceptionCopyWithImpl<_$OtherException>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -974,13 +995,13 @@ class _$OtherException extends OtherException {
     required TResult Function(ResponseValue<dynamic> response)
         responseException,
     required TResult Function() requestCancelled,
-    required TResult Function() otherException,
+    required TResult Function(Object? error) otherException,
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
     required TResult Function(DefinedException exception) definedException,
   }) {
-    return otherException();
+    return otherException(error);
   }
 
   @override
@@ -991,13 +1012,13 @@ class _$OtherException extends OtherException {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
     TResult Function(DefinedException exception)? definedException,
   }) {
-    return otherException?.call();
+    return otherException?.call(error);
   }
 
   @override
@@ -1008,7 +1029,7 @@ class _$OtherException extends OtherException {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -1016,7 +1037,7 @@ class _$OtherException extends OtherException {
     required TResult orElse(),
   }) {
     if (otherException != null) {
-      return otherException();
+      return otherException(error);
     }
     return orElse();
   }
@@ -1078,8 +1099,13 @@ class _$OtherException extends OtherException {
 }
 
 abstract class OtherException extends NetworkException {
-  const factory OtherException() = _$OtherException;
+  const factory OtherException([final Object? error]) = _$OtherException;
   const OtherException._() : super._();
+
+  Object? get error;
+  @JsonKey(ignore: true)
+  _$$OtherExceptionCopyWith<_$OtherException> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1129,7 +1155,7 @@ class _$NoInternetConnection extends NoInternetConnection {
     required TResult Function(ResponseValue<dynamic> response)
         responseException,
     required TResult Function() requestCancelled,
-    required TResult Function() otherException,
+    required TResult Function(Object? error) otherException,
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
@@ -1146,7 +1172,7 @@ class _$NoInternetConnection extends NoInternetConnection {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -1163,7 +1189,7 @@ class _$NoInternetConnection extends NoInternetConnection {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -1284,7 +1310,7 @@ class _$UnableToProcessData extends UnableToProcessData {
     required TResult Function(ResponseValue<dynamic> response)
         responseException,
     required TResult Function() requestCancelled,
-    required TResult Function() otherException,
+    required TResult Function(Object? error) otherException,
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
@@ -1301,7 +1327,7 @@ class _$UnableToProcessData extends UnableToProcessData {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -1318,7 +1344,7 @@ class _$UnableToProcessData extends UnableToProcessData {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -1439,7 +1465,7 @@ class _$UnexpectedError extends UnexpectedError {
     required TResult Function(ResponseValue<dynamic> response)
         responseException,
     required TResult Function() requestCancelled,
-    required TResult Function() otherException,
+    required TResult Function(Object? error) otherException,
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
@@ -1456,7 +1482,7 @@ class _$UnexpectedError extends UnexpectedError {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -1473,7 +1499,7 @@ class _$UnexpectedError extends UnexpectedError {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -1619,7 +1645,7 @@ class _$DefinedNetworkError extends DefinedNetworkError {
     required TResult Function(ResponseValue<dynamic> response)
         responseException,
     required TResult Function() requestCancelled,
-    required TResult Function() otherException,
+    required TResult Function(Object? error) otherException,
     required TResult Function() noInternetConnection,
     required TResult Function() unableToProcessData,
     required TResult Function() unexpectedError,
@@ -1636,7 +1662,7 @@ class _$DefinedNetworkError extends DefinedNetworkError {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,
@@ -1653,7 +1679,7 @@ class _$DefinedNetworkError extends DefinedNetworkError {
     TResult Function()? receiveTimeout,
     TResult Function(ResponseValue<dynamic> response)? responseException,
     TResult Function()? requestCancelled,
-    TResult Function()? otherException,
+    TResult Function(Object? error)? otherException,
     TResult Function()? noInternetConnection,
     TResult Function()? unableToProcessData,
     TResult Function()? unexpectedError,

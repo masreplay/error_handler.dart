@@ -7,6 +7,7 @@ FutureResponse<Post> getPost() async {
   const path = "https://jsonplaceholder.typicode.com/posts/1";
 
   final response = await Dio().get(path);
+  
   return response.convert(Post.fromJson);
 }
 

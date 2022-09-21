@@ -21,7 +21,7 @@ extension NetworkErrorExtension on NetworkException {
         noInternetConnection: () => translation.noInternetConnection,
         sendTimeout: () => translation.sendTimeout,
         unableToProcessData: () => translation.unableToProcessData,
-        otherException: () => translation.otherException,
+        otherException: (error) => translation.otherException,
         receiveTimeout: () => translation.receiveTimeout,
         definedException: (error) => translation.unexpectedError,
       );
