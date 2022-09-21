@@ -7,8 +7,10 @@ Welcome to [ErrorHandler](https://pub.dev/packages/error_handler), error handler
 - [How to use](#how-to-use)
   - [install](#install)
   - [Example](#example)
+    - [```.future``` get api result directly full example](#future-get-api-result-directly-full-example)
     - [```.stream``` provide Loading and Idle State full example](#stream-provide-loading-and-idle-state-full-example)
     - [Advance login example for post request full example](#advance-login-example-for-post-request-full-example)
+  - [Other Example](#other-example)
   - [Contribute](#contribute)
   - [Credits 🙏](#credits-)
 
@@ -131,6 +133,10 @@ void main() {
   });
 }
 ```
+
+## Other Example
+- [status code 401 unauthorized](example/unauthorized_401_example.dart)
+- [status code 401 unauthorized advance example with ErrorFilter](example/unauthorized_401_example.dart)
 
 ## Contribute
 please fork the repo and be part of maintainers team ❤️‍🔥
