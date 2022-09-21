@@ -1,3 +1,5 @@
+## 1.0.8
+- DioConverter, ChopperConverter not work now because of issue in dartdoc use ResponseConverter<T, Map<String, dynamic>> instead 
 ## 1.0.7
 
 - add http error 401 docs
