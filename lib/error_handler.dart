@@ -3,8 +3,8 @@
 /// freezed based api
 library error_handler;
 
-export 'error_handler_base.dart';
-export 'error_handler_direct.dart';
+export 'src/error_handler_base.dart';
+export 'src/error_handler_direct.dart';
 export 'src/http_response/http_response.dart';
 export 'src/logger.dart';
 export 'src/network_exception/network_exception.dart';
