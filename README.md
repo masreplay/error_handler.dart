@@ -44,7 +44,7 @@ flutter pub add dio
 ```
 
 ## Example
-- ```.future``` get api result directly [full example](example/error_handler.dart)
+### ```.future``` get api result directly [full example](example/error_handler_example.dart)
 ```dart
 import 'package:dio/dio.dart';
 import 'package:error_handler/error_handler.dart';
