@@ -1,3 +1,7 @@
+## 1.0.7
+
+- add http error 401 docs
+
 ## 1.0.6
 
 - fix: chopper .transform not work correctly
