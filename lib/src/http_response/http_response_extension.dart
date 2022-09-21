@@ -1,5 +1,6 @@
 /// Covert response to dart class or something else
-typedef ResponseConverter<R, RT> = R Function(RT map);
+typedef ResponseConverter<R, RT> = R Function(RT);
 
 /// [dio.Response] convertor
-typedef DioConverter<R> = ResponseConverter<R, Map<String, dynamic>>;
+/// https://github.com/dart-lang/dartdoc/issues/3132
+// typedef DioConverter<T> = ResponseConverter<T, Map<String, dynamic>>;

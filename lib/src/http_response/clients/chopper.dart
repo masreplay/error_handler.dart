@@ -2,7 +2,8 @@ import 'package:chopper/chopper.dart';
 import 'package:error_handler/error_handler.dart';
 
 /// [Response] convertor
-typedef ChopperResponse<R> = ResponseConverter<R, Map<String, dynamic>>;
+/// https://github.com/dart-lang/dartdoc/issues/3132
+// typedef ChopperResponse<R> = ResponseConverter<R, Map<String, dynamic>>;
 
 typedef ChopperHttpResponse<T> = HttpResponse<T, Response<T>>;
 
@@ -18,7 +19,7 @@ extension HttpResponseChopperExtension<T> on Response<T> {
   ///
   /// response.convert((map) => User.fromJson(map));
   /// ```
-  ChopperHttpResponse convert(ChopperResponse<T> convert) {
+  ChopperHttpResponse convert(ResponseConverter<T, Map<String, dynamic>> convert) {
     return ChopperHttpResponse(
       convert(this.body as dynamic),
       ResponseValue(this.body as dynamic, statusCode),

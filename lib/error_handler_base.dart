@@ -120,7 +120,7 @@ class ErrorHandler<T> {
   /// return value directly [Error] or [Data]
   ///
   /// - [apiCall] API call of any client with any Http method type
-  /// marke api call with [.transform]
+  /// mark api call with transform
   /// - [dataFilters] change [Data] type to [Error] or new [Data] type
   FutureOrState<State> future<State>(
     FutureResponse<State> Function() apiCall, {
