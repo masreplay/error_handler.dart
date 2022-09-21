@@ -21,9 +21,9 @@ Welcome to [ErrorHandler](https://pub.dev/packages/error_handler), error handler
 - built above [freezed](https://github.com/rrousselGit/freezed)
 - **work with any http client like [chopper](https://pub.dev/packages/chopper),[dio](https://pub.dev/packages/chopper) and more **
 
-<!-- | Before                          | After                          |
+| Before                          | After                          |
 | ------------------------------- | ------------------------------ |
-| ![before](readme/before.png) | ![after](readme/after.png) | -->
+| ![before](readme/before.png) | ![after](readme/after.png) |
 
 
 # How to use
