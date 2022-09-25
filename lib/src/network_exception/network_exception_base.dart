@@ -26,7 +26,8 @@ class NetworkException with _$NetworkException {
 
   const factory NetworkException.requestCancelled() = RequestCancelled;
 
-  const factory NetworkException.otherException([ObjectError error]) = OtherException;
+  const factory NetworkException.otherException([ObjectError error]) =
+      OtherException;
 
   const factory NetworkException.noInternetConnection() = NoInternetConnection;
 

@@ -19,7 +19,8 @@ extension HttpResponseChopperExtension<T> on Response<T> {
   ///
   /// response.convert((map) => User.fromJson(map));
   /// ```
-  ChopperHttpResponse convert(ResponseConverter<T, Map<String, dynamic>> convert) {
+  ChopperHttpResponse convert(
+      ResponseConverter<T, Map<String, dynamic>> convert) {
     return ChopperHttpResponse(
       convert(this.body as dynamic),
       ResponseValue(this.body as dynamic, statusCode),
