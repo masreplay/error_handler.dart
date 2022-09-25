@@ -1,3 +1,7 @@
+## 1.1.0
+- stable
+- Add docs
+
 ## 1.0.9
 - Add docs
 
